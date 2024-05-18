@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-may-2024 17:30:18 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Mobiliario" table="mobiliario" catalog="mydb" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="mueble" type="string">
+            <column name="mueble" length="45" not-null="true" />
+        </property>
+        <set name="lineamobiliarios" table="lineamobiliario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMobiliario" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Lineamobiliario" />
+        </set>
+    </class>
+</hibernate-mapping>

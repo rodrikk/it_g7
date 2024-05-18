@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-may-2024 17:30:18 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Usuarios" table="usuarios" catalog="mydb" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="rol" class="modelos.Rol" fetch="select">
+            <column name="idRol" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <set name="comprarsForIdComprador" table="comprar" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idComprador" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Comprar" />
+        </set>
+        <set name="alquilersForIdInquilino" table="alquiler" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInquilino" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Alquiler" />
+        </set>
+        <set name="valoracionpropiedads" table="valoracionpropiedad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idValorador" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Valoracionpropiedad" />
+        </set>
+        <set name="visitas" table="visita" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVisitante" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Visita" />
+        </set>
+        <set name="alquilersForIdPropietario" table="alquiler" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPropietario" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Alquiler" />
+        </set>
+        <set name="valoracionusuariosForIdUsuario" table="valoracionusuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idUsuario" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Valoracionusuario" />
+        </set>
+        <set name="valoracionusuariosForIdValorador" table="valoracionusuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idValorador" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Valoracionusuario" />
+        </set>
+        <set name="comprarsForIdVendedor" table="comprar" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVendedor" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Comprar" />
+        </set>
+        <set name="seguros" table="seguro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInquilino" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Seguro" />
+        </set>
+        <set name="propiedadesesForIdPropietario" table="propiedades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPropietario" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Propiedades" />
+        </set>
+        <set name="propiedadesesForIdInquilino" table="propiedades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInquilino" />
+            </key>
+            <one-to-many class="modelos.Propiedades" />
+        </set>
+    </class>
+</hibernate-mapping>

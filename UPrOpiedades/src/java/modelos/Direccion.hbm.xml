@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-may-2024 17:30:18 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Direccion" table="direccion" catalog="mydb" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="calle" type="string">
+            <column name="calle" length="45" not-null="true" />
+        </property>
+        <property name="numero" type="int">
+            <column name="numero" not-null="true" />
+        </property>
+        <property name="codigoPostal" type="int">
+            <column name="codigoPostal" not-null="true" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="45" not-null="true" />
+        </property>
+        <property name="provincia" type="string">
+            <column name="provincia" length="45" not-null="true" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="45" not-null="true" />
+        </property>
+        <set name="propiedadeses" table="propiedades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idDireccion" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Propiedades" />
+        </set>
+    </class>
+</hibernate-mapping>
