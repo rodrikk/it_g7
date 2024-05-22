@@ -29,7 +29,7 @@ public class DAOUsuario {
     }
 
     
-     //Read
+     //Read Usuario
     public Usuarios obtenerUsuario(int id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
