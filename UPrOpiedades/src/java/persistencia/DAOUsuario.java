@@ -45,7 +45,7 @@ public class DAOUsuario {
     public void actualizarUsuario(String nombre, String apellidos, String email, int id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("From Bateria Where id = '" + id + "'");
+        Query query = session.createQuery("From Usuarios Where id = '" + id + "'");
         Usuarios usuario = (Usuarios) query.uniqueResult();
         usuario.setNombre(nombre);
         usuario.setApellidos(apellidos);
