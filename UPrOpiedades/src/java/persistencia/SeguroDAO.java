@@ -3,7 +3,7 @@ package persistencia;
 import modelos.HibernateUtil;
 import java.util.Date;
 import java.util.List;
-import modelos.Seguro;
+import modelos.Seguros;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,7 +17,7 @@ public class SeguroDAO {
     Session session = null;
 
     // Create
-    public void registrarSeguro(Seguro s) {
+    public void registrarSeguro(Seguros s) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(s);
@@ -25,12 +25,12 @@ public class SeguroDAO {
     }
 
     // Read Seguro
-    public Seguro obtenerSeguro(int id) {
+    public Seguros obtenerSeguro(int id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         String sql = "From Seguro WHERE id=" + id;
         Query query = session.createQuery(sql);
-        Seguro seguro = (Seguro) query.uniqueResult();
+        Seguros seguro = (Seguros) query.uniqueResult();
         tx.commit();
         return seguro;
     }
@@ -41,7 +41,7 @@ public class SeguroDAO {
         Transaction transaction = session.beginTransaction();
         String sql = "From Seguro Where id = " + id;
         Query query = session.createQuery(sql);
-        Seguro seguro = (Seguro) query.uniqueResult();
+        Seguros seguro = (Seguros) query.uniqueResult();
         seguro.setCobertura(nuevaCobertura);
         seguro.setTarifa(nuevaTarifa);
         seguro.setFechaInicio(nuevaFechaInicio);
@@ -51,7 +51,7 @@ public class SeguroDAO {
     }
 
     // Delete
-    public void eliminarSeguro(Seguro s) {
+    public void eliminarSeguro(Seguros s) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.delete(s);
@@ -59,12 +59,12 @@ public class SeguroDAO {
     }
 
     // List Seguros
-    public List<Seguro> listaSeguros() {
+    public List<Seguros> listaSeguros() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         String sql = "From Seguro";
         Query query = session.createQuery(sql);
-        List<Seguro> list = (List<Seguro>) query.list();
+        List<Seguros> list = (List<Seguros>) query.list();
         tx.commit();
         return list;
     }

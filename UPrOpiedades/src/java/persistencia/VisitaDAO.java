@@ -1,7 +1,7 @@
 package persistencia;
 
 import java.util.List;
-import modelos.Visita;
+import modelos.Visitas;
 import modelos.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,7 +16,7 @@ public class VisitaDAO {
     Session session = null;
 
     // Create
-    public void registrarVisita(Visita v) {
+    public void registrarVisita(Visitas v) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(v);
@@ -24,12 +24,12 @@ public class VisitaDAO {
     }
 
     // Read Visita
-    public Visita obtenerVisita(int id) {
+    public Visitas obtenerVisita(int id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         String sql = "From Visita WHERE id=" + id;
         Query query = session.createQuery(sql);
-        Visita visita = (Visita) query.uniqueResult();
+        Visitas visita = (Visitas) query.uniqueResult();
         tx.commit();
         return visita;
     }
@@ -40,14 +40,14 @@ public class VisitaDAO {
         Transaction transaction = session.beginTransaction();
         String sql = "From Visita Where id = " + id;
         Query query = session.createQuery(sql);
-        Visita visita = (Visita) query.uniqueResult();
+        Visitas visita = (Visitas) query.uniqueResult();
         visita.setDuracion(nuevaDuracion);
         session.update(visita);
         transaction.commit();
     }
 
     // Delete
-    public void eliminarVisita(Visita v) {
+    public void eliminarVisita(Visitas v) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.delete(v);
@@ -55,12 +55,12 @@ public class VisitaDAO {
     }
 
     // List Visitas
-    public List<Visita> listaVisitas() {
+    public List<Visitas> listaVisitas() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         String sql = "From Visita";
         Query query = session.createQuery(sql);
-        List<Visita> list = (List<Visita>) query.list();
+        List<Visitas> list = (List<Visitas>) query.list();
         tx.commit();
         return list;
     }
