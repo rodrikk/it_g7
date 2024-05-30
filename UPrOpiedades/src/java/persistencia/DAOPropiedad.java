@@ -71,7 +71,7 @@ public class DAOPropiedad {
     public List<Propiedades> listaPropiedades() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        String sql = "From Usuarios";
+        String sql = "From Propiedades";
         Query query = session.createQuery(sql);
         List<Propiedades> list = (List<Propiedades>) query.list();
         tx.commit();
