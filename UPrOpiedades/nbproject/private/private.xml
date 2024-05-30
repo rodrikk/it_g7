@@ -4,11 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/it_g7/UPrOpiedades/web/index.html</file>
-            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/it_g7/UPrOpiedades/src/java/modelos/Alquiler.java</file>
-            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/it_g7/UPrOpiedades/src/java/modelos/HibernateUtil.java</file>
-            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/it_g7/UPrOpiedades/src/java/modelos/Comprar.java</file>
-            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/it_g7/UPrOpiedades/src/java/persistencia/DAOComprar.java</file>
-            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/it_g7/UPrOpiedades/src/java/persistencia/DAOAlquilar.java</file>
+            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/it_g7/UPrOpiedades/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>
