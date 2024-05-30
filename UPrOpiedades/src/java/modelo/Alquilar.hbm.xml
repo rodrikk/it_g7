@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2024 16:36:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Alquilar" table="alquilar" catalog="propiedades" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="propiedades" class="modelo.Propiedades" fetch="select">
+            <column name="id_propiedad" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuariosByIdPropietario" class="modelo.Usuarios" fetch="select">
+            <column name="id_propietario" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuariosByIdAlquilado" class="modelo.Usuarios" fetch="select">
+            <column name="id_alquilado" not-null="true" />
+        </many-to-one>
+        <property name="precio" type="double">
+            <column name="precio" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="10" not-null="true" />
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

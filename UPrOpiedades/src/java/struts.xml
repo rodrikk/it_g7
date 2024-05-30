@@ -5,6 +5,8 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        
+        <action name="" class="Acciones.cargaInicialAction">
+            <result name="success">/index.jsp</result>
+        </action>
     </package>
 </struts>

@@ -1,5 +1,5 @@
-package modelos;
-// Generated 18-may-2024 17:30:18 by Hibernate Tools 4.3.1
+package modelo;
+// Generated 30-may-2024 16:36:51 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,30 +10,29 @@ import java.util.Date;
 public class Comprar  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private Propiedades propiedades;
-     private Usuarios usuariosByIdComprador;
      private Usuarios usuariosByIdVendedor;
+     private Usuarios usuariosByIdComprador;
      private double precio;
      private Date fecha;
 
     public Comprar() {
     }
 
-    public Comprar(int id, Propiedades propiedades, Usuarios usuariosByIdComprador, Usuarios usuariosByIdVendedor, double precio, Date fecha) {
-       this.id = id;
+    public Comprar(Propiedades propiedades, Usuarios usuariosByIdVendedor, Usuarios usuariosByIdComprador, double precio, Date fecha) {
        this.propiedades = propiedades;
-       this.usuariosByIdComprador = usuariosByIdComprador;
        this.usuariosByIdVendedor = usuariosByIdVendedor;
+       this.usuariosByIdComprador = usuariosByIdComprador;
        this.precio = precio;
        this.fecha = fecha;
     }
    
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public Propiedades getPropiedades() {
@@ -43,19 +42,19 @@ public class Comprar  implements java.io.Serializable {
     public void setPropiedades(Propiedades propiedades) {
         this.propiedades = propiedades;
     }
-    public Usuarios getUsuariosByIdComprador() {
-        return this.usuariosByIdComprador;
-    }
-    
-    public void setUsuariosByIdComprador(Usuarios usuariosByIdComprador) {
-        this.usuariosByIdComprador = usuariosByIdComprador;
-    }
     public Usuarios getUsuariosByIdVendedor() {
         return this.usuariosByIdVendedor;
     }
     
     public void setUsuariosByIdVendedor(Usuarios usuariosByIdVendedor) {
         this.usuariosByIdVendedor = usuariosByIdVendedor;
+    }
+    public Usuarios getUsuariosByIdComprador() {
+        return this.usuariosByIdComprador;
+    }
+    
+    public void setUsuariosByIdComprador(Usuarios usuariosByIdComprador) {
+        this.usuariosByIdComprador = usuariosByIdComprador;
     }
     public double getPrecio() {
         return this.precio;

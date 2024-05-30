@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18-may-2024 17:30:18 by Hibernate Tools 4.3.1 -->
+<!-- Generated 30-may-2024 16:36:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelos.Seguro" table="seguro" catalog="mydb" optimistic-lock="version">
-        <id name="id" type="int">
+    <class name="modelo.Seguros" table="seguros" catalog="propiedades" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
-        <many-to-one name="propiedades" class="modelos.Propiedades" fetch="select">
-            <column name="idPropiedad" not-null="true" />
+        <many-to-one name="propiedades" class="modelo.Propiedades" fetch="select">
+            <column name="id_propiedad" not-null="true" />
         </many-to-one>
-        <many-to-one name="usuarios" class="modelos.Usuarios" fetch="select">
-            <column name="idInquilino" not-null="true" />
+        <many-to-one name="usuarios" class="modelo.Usuarios" fetch="select">
+            <column name="id_inquilino" not-null="true" />
         </many-to-one>
         <property name="cobertura" type="string">
             <column name="cobertura" length="45" not-null="true" />
@@ -21,10 +21,10 @@
             <column name="tarifa" precision="22" scale="0" not-null="true" />
         </property>
         <property name="fechaInicio" type="date">
-            <column name="fechaInicio" length="10" not-null="true" />
+            <column name="fecha_inicio" length="10" not-null="true" />
         </property>
         <property name="fechaFin" type="date">
-            <column name="fechaFin" length="10" not-null="true" />
+            <column name="fecha_fin" length="10" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

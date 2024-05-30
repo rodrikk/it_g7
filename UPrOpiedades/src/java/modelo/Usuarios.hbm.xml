@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2024 16:36:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Usuarios" table="usuarios" catalog="propiedades" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="roles" class="modelo.Roles" fetch="select">
+            <column name="id_rol" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="45" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fecha_nacimiento" length="10" not-null="true" />
+        </property>
+        <set name="favoritoses" table="favoritos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_usuario" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Favoritos" />
+        </set>
+        <set name="visitases" table="visitas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_visitante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Visitas" />
+        </set>
+        <set name="comprarsForIdVendedor" table="comprar" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_vendedor" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Comprar" />
+        </set>
+        <set name="seguroses" table="seguros" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_inquilino" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Seguros" />
+        </set>
+        <set name="propiedadesesForIdPropietario" table="propiedades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_propietario" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Propiedades" />
+        </set>
+        <set name="alquilarsForIdPropietario" table="alquilar" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_propietario" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Alquilar" />
+        </set>
+        <set name="propiedadesesForIdInquilino" table="propiedades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_inquilino" />
+            </key>
+            <one-to-many class="modelo.Propiedades" />
+        </set>
+        <set name="alquilarsForIdAlquilado" table="alquilar" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_alquilado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Alquilar" />
+        </set>
+        <set name="valoracioneses" table="valoraciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_valorador" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Valoraciones" />
+        </set>
+        <set name="comprarsForIdComprador" table="comprar" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_comprador" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Comprar" />
+        </set>
+    </class>
+</hibernate-mapping>

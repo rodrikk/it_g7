@@ -43,19 +43,21 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/propiedades?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <mapping resource="modelos/Usuarios.hbm.xml"/>
-    <mapping resource="modelos/Alquiler.hbm.xml"/>
-    <mapping resource="modelos/Mobiliario.hbm.xml"/>
-    <mapping resource="modelos/Visita.hbm.xml"/>
-    <mapping resource="modelos/Direccion.hbm.xml"/>
-    <mapping resource="modelos/Propiedades.hbm.xml"/>
-    <mapping resource="modelos/Lineamobiliario.hbm.xml"/>
-    <mapping resource="modelos/Seguro.hbm.xml"/>
-    <mapping resource="modelos/Valoracionusuario.hbm.xml"/>
-    <mapping resource="modelos/Comprar.hbm.xml"/>
-    <mapping resource="modelos/Rol.hbm.xml"/>
-    <mapping resource="modelos/Valoracionpropiedad.hbm.xml"/>
+    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping resource="modelo/Propiedades.hbm.xml"/>
+    <mapping resource="modelo/Alquilar.hbm.xml"/>
+    <mapping resource="modelo/Valoraciones.hbm.xml"/>
+    <mapping resource="modelo/Usuarios.hbm.xml"/>
+    <mapping resource="modelo/Seguros.hbm.xml"/>
+    <mapping resource="modelo/Visitas.hbm.xml"/>
+    <mapping resource="modelo/Comprar.hbm.xml"/>
+    <mapping resource="modelo/Direcciones.hbm.xml"/>
+    <mapping resource="modelo/Favoritos.hbm.xml"/>
+    <mapping resource="modelo/Roles.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

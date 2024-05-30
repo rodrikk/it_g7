@@ -40,17 +40,15 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="mydb"/>
-  <table-filter match-name="comprar"/>
-  <table-filter match-name="visita"/>
-  <table-filter match-name="alquiler"/>
-  <table-filter match-name="rol"/>
-  <table-filter match-name="lineamobiliario"/>
-  <table-filter match-name="valoracionpropiedad"/>
-  <table-filter match-name="usuarios"/>
-  <table-filter match-name="mobiliario"/>
-  <table-filter match-name="seguro"/>
-  <table-filter match-name="valoracionusuario"/>
-  <table-filter match-name="direccion"/>
+  <schema-selection match-catalog="propiedades"/>
   <table-filter match-name="propiedades"/>
+  <table-filter match-name="alquilar"/>
+  <table-filter match-name="comprar"/>
+  <table-filter match-name="usuarios"/>
+  <table-filter match-name="visitas"/>
+  <table-filter match-name="direcciones"/>
+  <table-filter match-name="seguros"/>
+  <table-filter match-name="favoritos"/>
+  <table-filter match-name="roles"/>
+  <table-filter match-name="valoraciones"/>
 </hibernate-reverse-engineering>
