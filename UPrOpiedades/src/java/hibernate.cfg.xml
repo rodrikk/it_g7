@@ -49,15 +49,15 @@ Contributor(s):
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <mapping resource="modelo/Propiedades.hbm.xml"/>
-    <mapping resource="modelo/Alquilar.hbm.xml"/>
-    <mapping resource="modelo/Valoraciones.hbm.xml"/>
-    <mapping resource="modelo/Usuarios.hbm.xml"/>
-    <mapping resource="modelo/Seguros.hbm.xml"/>
-    <mapping resource="modelo/Visitas.hbm.xml"/>
-    <mapping resource="modelo/Comprar.hbm.xml"/>
-    <mapping resource="modelo/Direcciones.hbm.xml"/>
-    <mapping resource="modelo/Favoritos.hbm.xml"/>
-    <mapping resource="modelo/Roles.hbm.xml"/>
+    <mapping resource="modelos/Propiedades.hbm.xml"/>
+    <mapping resource="modelos/Alquilar.hbm.xml"/>
+    <mapping resource="modelos/Valoraciones.hbm.xml"/>
+    <mapping resource="modelos/Usuarios.hbm.xml"/>
+    <mapping resource="modelos/Seguros.hbm.xml"/>
+    <mapping resource="modelos/Visitas.hbm.xml"/>
+    <mapping resource="modelos/Comprar.hbm.xml"/>
+    <mapping resource="modelos/Direcciones.hbm.xml"/>
+    <mapping resource="modelos/Favoritos.hbm.xml"/>
+    <mapping resource="modelos/Roles.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

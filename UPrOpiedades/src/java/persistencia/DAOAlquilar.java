@@ -3,7 +3,7 @@ package persistencia;
 import java.util.Date;
 import java.util.List;
 import modelos.HibernateUtil;
-import modelos.Alquiler;
+import modelos.Alquilar;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,53 +17,53 @@ public class DAOAlquilar {
     Session session = null;
 
     // Create
-    public void registrarAlquiler(Alquiler a) {
+    public void registrarAlquilar(Alquilar a) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(a);
         tx.commit();
     }
 
-    // Read Alquiler
-    public Alquiler obtenerAlquiler(int id) {
+    // Read Alquilar
+    public Alquilar obtenerAlquilar(int id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        String sql = "From Alquiler WHERE id=" + id;
+        String sql = "From Alquilar WHERE id=" + id;
         Query query = session.createQuery(sql);
-        Alquiler alquiler = (Alquiler) query.uniqueResult();
+        Alquilar Alquilar = (Alquilar) query.uniqueResult();
         tx.commit();
-        return alquiler;
+        return Alquilar;
     }
 
     // Update
-    public void actualizarAlquiler(int id, double nuevoPrecio, Date nuevaFechaInicio, Date nuevaFechaFin) {
+    public void actualizarAlquilar(int id, double nuevoPrecio, Date nuevaFechaInicio, Date nuevaFechaFin) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        String sql = "From Alquiler Where id = '" + id + "'";
+        String sql = "From Alquilar Where id = '" + id + "'";
         Query query = session.createQuery(sql);
-        Alquiler alquiler = (Alquiler) query.uniqueResult();
-        alquiler.setPrecio(nuevoPrecio);
-        alquiler.setFechaInicio(nuevaFechaInicio);
-        alquiler.setFechaFin(nuevaFechaFin);
-        session.update(alquiler);
+        Alquilar Alquilar = (Alquilar) query.uniqueResult();
+        Alquilar.setPrecio(nuevoPrecio);
+        Alquilar.setFechaInicio(nuevaFechaInicio);
+        Alquilar.setFechaFin(nuevaFechaFin);
+        session.update(Alquilar);
         transaction.commit();
     }
 
     // Delete
-    public void eliminarAlquiler(Alquiler a) {
+    public void eliminarAlquilar(Alquilar a) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.delete(a);
         tx.commit();
     }
 
-    // List Alquileres
-    public List<Alquiler> listaAlquileres() {
+    // List Alquilares
+    public List<Alquilar> listaAlquilares() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        String sql = "From Alquiler";
+        String sql = "From Alquilar";
         Query query = session.createQuery(sql);
-        List<Alquiler> list = (List<Alquiler>) query.list();
+        List<Alquilar> list = (List<Alquilar>) query.list();
         tx.commit();
         return list;
     }

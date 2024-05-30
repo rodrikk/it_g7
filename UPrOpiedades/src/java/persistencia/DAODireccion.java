@@ -1,7 +1,7 @@
 package persistencia;
 
 import java.util.List;
-import modelos.Direccion;
+import modelos.Direcciones;
 import modelos.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,7 +16,7 @@ public class DAODireccion {
     Session session = null;
 
     // Create
-    public void registrarDireccion(Direccion d) {
+    public void registrarDireccion(Direcciones d) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(d);
@@ -24,12 +24,12 @@ public class DAODireccion {
     }
 
     // Read Direccion
-    public Direccion obtenerDireccion(int id) {
+    public Direcciones obtenerDireccion(int id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         String sql = "From Direccion WHERE id=" + id;
         Query query = session.createQuery(sql);
-        Direccion direccion = (Direccion) query.uniqueResult();
+        Direcciones direccion = (Direcciones) query.uniqueResult();
         tx.commit();
         return direccion;
     }
@@ -40,7 +40,7 @@ public class DAODireccion {
         Transaction transaction = session.beginTransaction();
         String sql = "From Direccion Where id = " + id;
         Query query = session.createQuery(sql);
-        Direccion direccion = (Direccion) query.uniqueResult();
+        Direcciones direccion = (Direcciones) query.uniqueResult();
         direccion.setCalle(nuevaCalle);
         direccion.setNumero(nuevoNumero);
         direccion.setCodigoPostal(nuevoCodigoPostal);
@@ -52,7 +52,7 @@ public class DAODireccion {
     }
 
     // Delete
-    public void eliminarDireccion(Direccion d) {
+    public void eliminarDireccion(Direcciones d) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.delete(d);
@@ -60,12 +60,12 @@ public class DAODireccion {
     }
 
     // List Direcciones
-    public List<Direccion> listaDirecciones() {
+    public List<Direcciones> listaDirecciones() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         String sql = "From Direccion";
         Query query = session.createQuery(sql);
-        List<Direccion> list = (List<Direccion>) query.list();
+        List<Direcciones> list = (List<Direcciones>) query.list();
         tx.commit();
         return list;
     }
