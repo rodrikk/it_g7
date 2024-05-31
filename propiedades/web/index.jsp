@@ -5,13 +5,16 @@
 --%>
 
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Inmobiliaria</title>
+        <title>UPrOpiedades</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
     <body>
@@ -31,19 +34,10 @@
                                 <a class="nav-link" href="#">Propietarios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Inquilinos</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="#">Seguros</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Operaciones</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="#">Valoraciones</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Favoritos</a>
                             </li>
                         </ul>
                     </div>
@@ -62,27 +56,33 @@
         <div class="container mt-4">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h1>Bienvenidos a la Inmobiliaria</h1>
+                    <h1>Bienvenidos a UProPiedades</h1>
                 </div>
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <s:form action="buscarPropiedades" method="GET">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Buscar por zona" name="searchInput">
+                            <select class="form-control" style="max-width: 150px;" name="searchType">
+                                <option selected>Seleccionar tipo...</option>
+                                <option value="Alquiler">Alquiler</option>
+                                <option value="Compra">Compra</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                    </s:form>
+                </div>
+            </div>
+        </div>
 
-        <table border="1">
-            <thead>
-                <tr>
-                </tr>
-            </thead>
-            <tbody>
-            <s:iterator value="usuarios" var="usuario">
-                <tr>
-                    <td><s:property value="#usuario.id"></s:property></td>
-                    <td><s:property value="#usuario.nombre"></s:property></td>
-                    <td><s:property value="#usuario.idRol.rol"></s:property></td>
-                </tr>
-            </s:iterator>
-        </tbody>
-    </table>
-</body>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
 </html>

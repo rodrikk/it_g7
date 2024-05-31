@@ -5,11 +5,11 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <!-- <action name="" class="Acciones.verUsuariosAction">
+        <action name="" >
             <result name="success">/index.jsp</result>
-        </action> -->
-        <action name="" class="Acciones.verPropiedadesAction">
-            <result name="success">/propiedades.jsp</result>
         </action>
+        <!--<action name="" class="Acciones.verPropiedadesAction">
+            <result name="success">/propiedades.jsp</result>
+        </action>-->
     </package>
 </struts>

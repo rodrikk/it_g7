@@ -62,7 +62,7 @@
         <div class="container mt-4">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h1>Bienvenidos a la Inmobiliaria</h1>
+                    <h1>Bienvenidos a UPrOpiedades</h1>
                 </div>
             </div>
         </div>
