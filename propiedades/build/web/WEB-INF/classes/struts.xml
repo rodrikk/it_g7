@@ -43,6 +43,12 @@
         <action name="borrarPropiedad" class="Acciones.borrarPropiedadAction">
             <result name="success">/mis_propiedades.jsp</result>
         </action>
+        <action name="verUsuario" class="Acciones.verUsuarioAction">
+            <result name="success">/usuario.jsp</result>
+        </action>
+        <action name="editarUsuario" class="Acciones.editarUsuarioAction">
+            <result name="success">/usuario.jsp</result>
+        </action>
         <!-- <action name="" class="Acciones.verPropiedadesAction">
             <result name="success">/propiedades.jsp</result>
         </action>

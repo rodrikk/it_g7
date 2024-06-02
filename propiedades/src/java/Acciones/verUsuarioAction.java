@@ -9,16 +9,16 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
 import modelo.Usuarios;
-import modelo.Valoraciones;
 import servicios.DAOUsuarios;
-import servicios.DAOValoraciones;
+
 /**
  *
  * @author migue
  */
 public class verUsuarioAction extends ActionSupport {
-    
+
     private Usuarios usuario;
+    private int idUsuario;
 
     public verUsuarioAction() {
     }
@@ -31,11 +31,19 @@ public class verUsuarioAction extends ActionSupport {
         this.usuario = usuario;
     }
     
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     public String execute() throws Exception {
         DAOUsuarios dao = new DAOUsuarios();
         GenericType<Usuarios> generic;
-        generic = new GenericType<Usuarios> () {};
-        usuario = dao.find_XML(generic, "1");
+        generic = new GenericType<Usuarios>() {};
+        usuario = dao.find_XML(generic, String.valueOf(idUsuario));
         return SUCCESS;
     }
 }

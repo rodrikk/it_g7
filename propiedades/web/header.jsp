@@ -64,8 +64,12 @@
                         <c:otherwise>
                             <div class="d-flex">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <s:property value="#session.usuario"></s:property>
+                                    <li class="nav-item">                                      
+                                        <s:form action="verUsuario" id="verUsuario" method="POST">
+                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
+                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="%{#session.usuario}">                                                
+                                            </s:submit>
+                                        </s:form>
                                         <s:form action="misPropiedades" id="misPropiedades" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                             <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Mis propiedades"></s:submit>
