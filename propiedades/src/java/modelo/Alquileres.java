@@ -76,10 +76,6 @@ public class Alquileres implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    public Alquileres(Integer id, String titulo, String descripcion, int superficie, int numeroHabitaciones, byte[] foto, double precio, Usuarios idPropietario, Usuarios alquilado, Direcciones idDireccion, Operaciones idOperacion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public Integer getId() {
         return id;
     }

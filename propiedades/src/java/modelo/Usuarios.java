@@ -15,8 +15,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -87,9 +85,6 @@ public class Usuarios implements Serializable {
     private Collection<Alquileres> alquileresCollection1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private Collection<Favoritos> favoritosCollection;
-    @JoinColumn(name = "id_rol", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Roles idRol;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropietario")
     private Collection<Propiedades> propiedadesCollection;
     @OneToMany(mappedBy = "idInquilino")
@@ -214,14 +209,6 @@ public class Usuarios implements Serializable {
 
     public void setFavoritosCollection(Collection<Favoritos> favoritosCollection) {
         this.favoritosCollection = favoritosCollection;
-    }
-
-    public Roles getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(Roles idRol) {
-        this.idRol = idRol;
     }
 
     @XmlTransient

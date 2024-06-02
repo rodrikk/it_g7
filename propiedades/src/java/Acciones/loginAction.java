@@ -104,7 +104,6 @@ public class loginAction extends ActionSupport {
             Map session = (Map) ActionContext.getContext().get("session");
             session.put("usuario", usuarioRegistrado.getNombre());
             session.put("idUsuario", usuarioRegistrado.getId());
-            session.put("rol", usuarioRegistrado.getIdRol().getId());
             
             GenericType<List<Valoracionestotales>> generic_valoracionesTotales;
             generic_valoracionesTotales = new GenericType<List<Valoracionestotales>>() {};

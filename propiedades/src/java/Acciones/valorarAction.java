@@ -25,10 +25,11 @@ public class valorarAction extends ActionSupport {
 
     private List<Valoraciones> valoraciones;
     private List<Valoracionestotales> valoracionesTotales;
-    private String idValoracion = "";
+    private int idValoracion;
     private String rating = "";
     private String idPropiedad = "";
     private String idValorador = "";
+    private Propiedades propiedad;
     private double valoracionTotal;
     private int cont;
 
@@ -51,11 +52,11 @@ public class valorarAction extends ActionSupport {
         this.valoracionesTotales = valoracionesTotales;
     }
 
-    public String getIdValoracion() {
+    public int getIdValoracion() {
         return idValoracion;
     }
 
-    public void setIdValoracion(String idValoracion) {
+    public void setIdValoracion(int idValoracion) {
         this.idValoracion = idValoracion;
     }
 
@@ -81,6 +82,14 @@ public class valorarAction extends ActionSupport {
 
     public void setIdValorador(String idValorador) {
         this.idValorador = idValorador;
+    }
+
+    public Propiedades getPropiedad() {
+        return propiedad;
+    }
+
+    public void setPropiedad(Propiedades propiedad) {
+        this.propiedad = propiedad;
     }
 
     public double getValoracionTotal() {
@@ -113,7 +122,7 @@ public class valorarAction extends ActionSupport {
 
         GenericType<Propiedades> generic_propiedad;
         generic_propiedad = new GenericType<Propiedades>() {};
-        Propiedades propiedad = daoPropiedades.find_XML(generic_propiedad, idPropiedad);
+        propiedad = daoPropiedades.find_XML(generic_propiedad, idPropiedad);
         valoracion.setIdPropiedad(propiedad);
 
         GenericType<Usuarios> generic_usuario;
@@ -144,17 +153,14 @@ public class valorarAction extends ActionSupport {
         
         for (int i = 0; i < valoracionesTotales.size(); i++) {
             if (valoracionesTotales.get(i).getIdPropiedad().getId() == Integer.parseInt(idPropiedad)) {
-                idValoracion = String.valueOf(valoracionesTotales.get(i).getId());
+                idValoracion = valoracionesTotales.get(i).getId();
             }
         }
         
-        // daoValoracionesTotales.remove(idValoracion);
-        Valoracionestotales vTotal = new Valoracionestotales();
-        vTotal.setValoracionTotal(valoracionTotal);
-        vTotal.setIdPropiedad(propiedad);
+        Valoracionestotales vTotal = new Valoracionestotales(idValoracion, valoracionTotal, propiedad);
+        daoValoracionesTotales.edit_XML(vTotal, String.valueOf(idValoracion));
         
-        Object obj_vTotal = vTotal;
-        daoValoracionesTotales.edit_XML(obj_vTotal, idValoracion);
+        propiedad = daoPropiedades.find_XML(generic_propiedad, idPropiedad);
         
         return SUCCESS;
     }

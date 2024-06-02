@@ -66,6 +66,10 @@
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
                                         <s:property value="#session.usuario"></s:property>
+                                        <s:form action="misPropiedades" id="misPropiedades" method="POST">
+                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
+                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Mis propiedades"></s:submit>
+                                        </s:form>
                                         <s:form action="verFavoritos" id="verFavoritos" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                             <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Favoritos"></s:submit>

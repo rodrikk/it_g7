@@ -59,6 +59,12 @@ public class Valoracionestotales implements Serializable {
         this.valoracionTotal = valoracionTotal;
     }
 
+    public Valoracionestotales(Integer id, double valoracionTotal, Propiedades idPropiedad) {
+        this.id = id;
+        this.valoracionTotal = valoracionTotal;
+        this.idPropiedad = idPropiedad;
+    }
+
     public Integer getId() {
         return id;
     }

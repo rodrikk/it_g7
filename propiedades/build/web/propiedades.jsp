@@ -29,6 +29,7 @@
                     <th>Descripción</th>
                     <th>Superficie</th>
                     <th>Habitaciones</th>
+                    <th>Valoración</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,9 +40,8 @@
                         <td><s:property value="#valoracionTotal.idPropiedad.descripcion"></s:property></td>
                         <td><s:property value="#valoracionTotal.idPropiedad.superficie"></s:property> m2</td>
                         <td><s:property value="#valoracionTotal.idPropiedad.numeroHabitaciones"></s:property></td>
-                        <td class="puntuacion-<s:property value='#valoracionTotal.id'/>"><s:property value="#valoracionTotal.valoracionTotal"></s:property></td>
+                        <td class="puntuacion-<s:property value='#valoracionTotal.id'/>" style="display: none;"><s:property value="#valoracionTotal.valoracionTotal"></s:property></td>
                             <td>
-                                <label for="rating">Valoración:</label>
                                 <div class="rating" id="rating-<s:property value='#valoracionTotal.id'/>">
                                 <i class="bi bi-star-fill star" id="<s:property value="'1' + #valoracionTotal.id"></s:property>" value="1"></i>
                                 <i class="bi bi-star-fill star" id="<s:property value="'2' + #valoracionTotal.id"></s:property>" value="2"></i>
@@ -66,18 +66,13 @@
                 var valoraciones = document.querySelectorAll('.rating');
                 valoraciones.forEach(function (ratingElement) {
                     var id = ratingElement.id.split('-').pop();
-                    var puntuacion = parseFloat(document.querySelector("td.puntuacion-" + id).innerText.trim());
+                    var puntuacion = parseInt(document.querySelector("td.puntuacion-" + id).innerText.trim());
                     var estrellas = ratingElement.querySelectorAll('.bi.star');
-                    var puntuacionEntera = Math.floor(puntuacion);
-                    var fraccion = puntuacion - puntuacionEntera;
-
-                    for (var i = 0; i < estrellas.length; i++) {
-                        if (i < puntuacionEntera) {
-                            estrellas[i].classList.add('checked');
-                        } else if (i == puntuacionEntera && fraccion > 0) {
-                            estrellas[i].style.background = "linear-gradient(90deg, gold " + (fraccion * 100) + "%, #ddd " + (fraccion * 100) + "%)";
+                    estrellas.forEach(function (star, index) {
+                        if (index < puntuacion) {
+                            star.classList.add('checked');
                         }
-                    }
+                    });
                 });
             }
 

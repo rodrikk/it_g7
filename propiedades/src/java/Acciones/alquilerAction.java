@@ -16,7 +16,6 @@ import javax.ws.rs.core.GenericType;
 import modelo.Alquileres;
 import modelo.Favoritos;
 import modelo.Propiedades;
-import modelo.Roles;
 import modelo.Usuarios;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import servicios.DAOAlquileres;

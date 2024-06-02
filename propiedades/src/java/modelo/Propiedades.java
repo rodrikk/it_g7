@@ -86,7 +86,7 @@ public class Propiedades implements Serializable {
     @ManyToOne(optional = false)
     private Direcciones idDireccion;
     @JoinColumn(name = "id_operacion", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Operaciones idOperacion;
     @JoinColumn(name = "id_propietario", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -116,7 +116,7 @@ public class Propiedades implements Serializable {
         this.numeroHabitaciones = numeroHabitaciones;
         this.precio = precio;
     }
-
+    
     public Propiedades(Integer id, String titulo, String descripcion, int superficie, int numeroHabitaciones, byte[] foto, double precio, Usuarios idPropietario, Usuarios idInquilino, Direcciones idDireccion, Operaciones idOperacion) {
         this.id = id;
         this.titulo = titulo;
@@ -130,8 +130,6 @@ public class Propiedades implements Serializable {
         this.idDireccion = idDireccion;
         this.idOperacion = idOperacion;
     }
-    
-    
 
     public Integer getId() {
         return id;

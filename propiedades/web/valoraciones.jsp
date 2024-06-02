@@ -64,10 +64,11 @@
                 var valoraciones = document.querySelectorAll('.rating');
                 valoraciones.forEach(function (ratingElement) {
                     var id = ratingElement.id.split('-').pop();
-                    var puntuacion = parseInt(document.querySelector("td.puntuacion-" + id).innerText.trim());
+                    var puntuacion = parseFloat(document.querySelector("td.puntuacion-" + id).innerText.trim());
+                    var puntuacionRedondeada = Math.round(puntuacion);
                     var estrellas = ratingElement.querySelectorAll('.bi.star');
                     estrellas.forEach(function (star, index) {
-                        if (index < puntuacion) {
+                        if (index < puntuacionRedondeada) {
                             star.classList.add('checked');
                         }
                     });
@@ -75,6 +76,7 @@
             }
 
             document.addEventListener('DOMContentLoaded', inicializarEstrellas);
+
         </script>
 
     </body>

@@ -31,8 +31,17 @@
             <result name="success">/favoritos.jsp</result>
             <result name="borrar">/propiedad.jsp</result>
         </action>
-        <action name="alquilerAction" class="Acciones.alquilerAction">
+        <action name="alquilarPropiedad" class="Acciones.alquilerAction">
             <result name="success">/propiedad.jsp</result>
+        </action>
+        <action name="comprarPropiedad" class="Acciones.comprarAction">
+            <result name="success">/propiedad.jsp</result>
+        </action>
+        <action name="misPropiedades" class="Acciones.misPropiedadesAction">
+            <result name="success">/mis_propiedades.jsp</result>
+        </action>
+        <action name="borrarPropiedad" class="Acciones.borrarPropiedadAction">
+            <result name="success">/mis_propiedades.jsp</result>
         </action>
         <!-- <action name="" class="Acciones.verPropiedadesAction">
             <result name="success">/propiedades.jsp</result>
