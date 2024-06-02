@@ -29,15 +29,17 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(servicios.service.AlquilarFacadeREST.class);
-        resources.add(servicios.service.ComprarFacadeREST.class);
+        resources.add(servicios.service.AlquileresFacadeREST.class);
+        resources.add(servicios.service.ComprasFacadeREST.class);
         resources.add(servicios.service.DireccionesFacadeREST.class);
         resources.add(servicios.service.FavoritosFacadeREST.class);
+        resources.add(servicios.service.OperacionesFacadeREST.class);
         resources.add(servicios.service.PropiedadesFacadeREST.class);
         resources.add(servicios.service.RolesFacadeREST.class);
         resources.add(servicios.service.SegurosFacadeREST.class);
         resources.add(servicios.service.UsuariosFacadeREST.class);
         resources.add(servicios.service.ValoracionesFacadeREST.class);
+        resources.add(servicios.service.ValoracionestotalesFacadeREST.class);
         resources.add(servicios.service.VisitasFacadeREST.class);
     }
     

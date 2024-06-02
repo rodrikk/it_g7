@@ -5,11 +5,47 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="" >
+        <action name="" class="">
             <result name="success">/index.jsp</result>
         </action>
-        <!--<action name="" class="Acciones.verPropiedadesAction">
+        <action name="login" class="Acciones.loginAction">
             <result name="success">/propiedades.jsp</result>
-        </action>-->
+            <result name="error">/login.jsp</result>
+        </action>
+        <action name="logout" class="Acciones.logoutAction">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="verPropiedad" class="Acciones.verPropiedadAction">
+            <result name="success">/propiedad.jsp</result>
+        </action>
+        <action name="valorarPropiedad" class="Acciones.valorarAction">
+            <result name="success">/propiedad.jsp</result>
+        </action>
+        <action name="agregarFavoritos" class="Acciones.agregarFavoritosAction">
+            <result name="success">/propiedad.jsp</result>
+        </action>
+        <action name="verFavoritos" class="Acciones.verFavoritosAction">
+            <result name="success">/favoritos.jsp</result>
+        </action>
+        <action name="borrarFavoritos" class="Acciones.borrarFavoritosAction">
+            <result name="success">/favoritos.jsp</result>
+            <result name="borrar">/propiedad.jsp</result>
+        </action>
+        <action name="alquilerAction" class="Acciones.alquilerAction">
+            <result name="success">/propiedad.jsp</result>
+        </action>
+        <!-- <action name="" class="Acciones.verPropiedadesAction">
+            <result name="success">/propiedades.jsp</result>
+        </action>
+        <action name="" class="Acciones.verPropiedadesAction">
+            <result name="success">/propiedades2.jsp</result>
+        </action>
+        
+        <action name="" class="Acciones.verValoracionesAction">
+            <result name="success">/propiedades.jsp</result>
+        </action>
+        <action name="" class="Acciones.verPropiedadesAction">
+            <result name="success">/propiedades.jsp</result>
+        </action> -->
     </package>
 </struts>

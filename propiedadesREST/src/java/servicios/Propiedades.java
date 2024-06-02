@@ -22,6 +22,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -35,8 +36,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Propiedades.findAll", query = "SELECT p FROM Propiedades p")
     , @NamedQuery(name = "Propiedades.findById", query = "SELECT p FROM Propiedades p WHERE p.id = :id")
+    , @NamedQuery(name = "Propiedades.findByTitulo", query = "SELECT p FROM Propiedades p WHERE p.titulo = :titulo")
+    , @NamedQuery(name = "Propiedades.findByDescripcion", query = "SELECT p FROM Propiedades p WHERE p.descripcion = :descripcion")
     , @NamedQuery(name = "Propiedades.findBySuperficie", query = "SELECT p FROM Propiedades p WHERE p.superficie = :superficie")
-    , @NamedQuery(name = "Propiedades.findByNumeroHabitaciones", query = "SELECT p FROM Propiedades p WHERE p.numeroHabitaciones = :numeroHabitaciones")})
+    , @NamedQuery(name = "Propiedades.findByNumeroHabitaciones", query = "SELECT p FROM Propiedades p WHERE p.numeroHabitaciones = :numeroHabitaciones")
+    , @NamedQuery(name = "Propiedades.findByPrecio", query = "SELECT p FROM Propiedades p WHERE p.precio = :precio")})
 public class Propiedades implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,6 +49,16 @@ public class Propiedades implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "titulo")
+    private String titulo;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "descripcion")
+    private String descripcion;
     @Basic(optional = false)
     @NotNull
     @Column(name = "superficie")
@@ -56,15 +70,24 @@ public class Propiedades implements Serializable {
     @Lob
     @Column(name = "foto")
     private byte[] foto;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "precio")
+    private double precio;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropiedad")
-    private Collection<Comprar> comprarCollection;
+    private Collection<Compras> comprasCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropiedad")
+    private Collection<Alquileres> alquileresCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropiedad")
+    private Collection<Valoracionestotales> valoracionestotalesCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropiedad")
     private Collection<Favoritos> favoritosCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropiedad")
-    private Collection<Alquilar> alquilarCollection;
     @JoinColumn(name = "id_direccion", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Direcciones idDireccion;
+    @JoinColumn(name = "id_operacion", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Operaciones idOperacion;
     @JoinColumn(name = "id_propietario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios idPropietario;
@@ -85,10 +108,13 @@ public class Propiedades implements Serializable {
         this.id = id;
     }
 
-    public Propiedades(Integer id, int superficie, int numeroHabitaciones) {
+    public Propiedades(Integer id, String titulo, String descripcion, int superficie, int numeroHabitaciones, double precio) {
         this.id = id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
         this.superficie = superficie;
         this.numeroHabitaciones = numeroHabitaciones;
+        this.precio = precio;
     }
 
     public Integer getId() {
@@ -97,6 +123,22 @@ public class Propiedades implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getSuperficie() {
@@ -123,13 +165,39 @@ public class Propiedades implements Serializable {
         this.foto = foto;
     }
 
-    @XmlTransient
-    public Collection<Comprar> getComprarCollection() {
-        return comprarCollection;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setComprarCollection(Collection<Comprar> comprarCollection) {
-        this.comprarCollection = comprarCollection;
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    @XmlTransient
+    public Collection<Compras> getComprasCollection() {
+        return comprasCollection;
+    }
+
+    public void setComprasCollection(Collection<Compras> comprasCollection) {
+        this.comprasCollection = comprasCollection;
+    }
+
+    @XmlTransient
+    public Collection<Alquileres> getAlquileresCollection() {
+        return alquileresCollection;
+    }
+
+    public void setAlquileresCollection(Collection<Alquileres> alquileresCollection) {
+        this.alquileresCollection = alquileresCollection;
+    }
+
+    @XmlTransient
+    public Collection<Valoracionestotales> getValoracionestotalesCollection() {
+        return valoracionestotalesCollection;
+    }
+
+    public void setValoracionestotalesCollection(Collection<Valoracionestotales> valoracionestotalesCollection) {
+        this.valoracionestotalesCollection = valoracionestotalesCollection;
     }
 
     @XmlTransient
@@ -141,21 +209,20 @@ public class Propiedades implements Serializable {
         this.favoritosCollection = favoritosCollection;
     }
 
-    @XmlTransient
-    public Collection<Alquilar> getAlquilarCollection() {
-        return alquilarCollection;
-    }
-
-    public void setAlquilarCollection(Collection<Alquilar> alquilarCollection) {
-        this.alquilarCollection = alquilarCollection;
-    }
-
     public Direcciones getIdDireccion() {
         return idDireccion;
     }
 
     public void setIdDireccion(Direcciones idDireccion) {
         this.idDireccion = idDireccion;
+    }
+
+    public Operaciones getIdOperacion() {
+        return idOperacion;
+    }
+
+    public void setIdOperacion(Operaciones idOperacion) {
+        this.idOperacion = idOperacion;
     }
 
     public Usuarios getIdPropietario() {

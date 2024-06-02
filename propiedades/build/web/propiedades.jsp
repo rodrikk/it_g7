@@ -4,65 +4,17 @@
     Author     : migue
 --%>
 
+<%@ include file="header.jsp" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Inmobiliaria</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-fluid d-flex justify-content-between">
-                <a class="navbar-brand" href="#">UPrOpiedades</a>
-                <div class="d-flex">
-                    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-center mt-3" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Propiedades</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Propietarios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Inquilinos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Seguros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Operaciones</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Valoraciones</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Favoritos</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
         <!-- Main Content -->
         <div class="container mt-4">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h1>Bienvenidos a la Inmobiliaria</h1>
+                    <h1>Bienvenidos a UPrOpiedades</h1>
                 </div>
             </div>
         </div>
@@ -72,19 +24,65 @@
         <table border="1">
             <thead>
                 <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Superficie</th>
+                    <th>Habitaciones</th>
                 </tr>
             </thead>
             <tbody>
-                <s:iterator value="propiedades" var="propiedad">
+                <s:iterator value="valoracionesTotales" var="valoracionTotal">
                     <tr>
-                        <td><s:property value="#propiedad.id"></s:property></td>
-                        <td><s:property value="#propiedad.superficie"></s:property></td>
-                        <td><s:property value="#propiedad.numeroHabitaciones"></s:property></td>
-                        <td><s:property value="#propiedad.idDireccion.calle"></s:property></td>
-                        <td><s:property value="#propiedad.idDireccion.ciudad"></s:property></td>
-                        </tr>
+                        <td><!-- Poner lo necesario para que se vea la imagen --></td>
+                        <td><s:property value="#valoracionTotal.idPropiedad.titulo"></s:property></td>
+                        <td><s:property value="#valoracionTotal.idPropiedad.descripcion"></s:property></td>
+                        <td><s:property value="#valoracionTotal.idPropiedad.superficie"></s:property> m2</td>
+                        <td><s:property value="#valoracionTotal.idPropiedad.numeroHabitaciones"></s:property></td>
+                        <td class="puntuacion-<s:property value='#valoracionTotal.id'/>"><s:property value="#valoracionTotal.valoracionTotal"></s:property></td>
+                            <td>
+                                <label for="rating">Valoración:</label>
+                                <div class="rating" id="rating-<s:property value='#valoracionTotal.id'/>">
+                                <i class="bi bi-star-fill star" id="<s:property value="'1' + #valoracionTotal.id"></s:property>" value="1"></i>
+                                <i class="bi bi-star-fill star" id="<s:property value="'2' + #valoracionTotal.id"></s:property>" value="2"></i>
+                                <i class="bi bi-star-fill star" id="<s:property value="'3' + #valoracionTotal.id"></s:property>" value="3"></i>
+                                <i class="bi bi-star-fill star" id="<s:property value="'4' + #valoracionTotal.id"></s:property>" value="4"></i>
+                                <i class="bi bi-star-fill star" id="<s:property value="'5' + #valoracionTotal.id"></s:property>" value="5"></i>
+                                </div>
+                            </td>
+                            <td>
+                            <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST">
+                                <s:hidden name="idPropiedad" value="%{#valoracionTotal.idPropiedad.id}"></s:hidden>
+                                <s:submit name="boton" value="Ver propiedad"></s:submit>
+                            </s:form>
+                        </td>
+                    </tr>
                 </s:iterator>
             </tbody>
         </table>
+
+        <script type="text/javascript">
+            function inicializarEstrellas() {
+                var valoraciones = document.querySelectorAll('.rating');
+                valoraciones.forEach(function (ratingElement) {
+                    var id = ratingElement.id.split('-').pop();
+                    var puntuacion = parseFloat(document.querySelector("td.puntuacion-" + id).innerText.trim());
+                    var estrellas = ratingElement.querySelectorAll('.bi.star');
+                    var puntuacionEntera = Math.floor(puntuacion);
+                    var fraccion = puntuacion - puntuacionEntera;
+
+                    for (var i = 0; i < estrellas.length; i++) {
+                        if (i < puntuacionEntera) {
+                            estrellas[i].classList.add('checked');
+                        } else if (i == puntuacionEntera && fraccion > 0) {
+                            estrellas[i].style.background = "linear-gradient(90deg, gold " + (fraccion * 100) + "%, #ddd " + (fraccion * 100) + "%)";
+                        }
+                    }
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', inicializarEstrellas);
+        </script>
+
     </body>
 </html>

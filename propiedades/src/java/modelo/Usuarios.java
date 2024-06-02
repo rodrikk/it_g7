@@ -78,15 +78,15 @@ public class Usuarios implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVendedor")
-    private Collection<Comprar> comprarCollection;
+    private Collection<Compras> comprasCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idComprador")
-    private Collection<Comprar> comprarCollection1;
+    private Collection<Compras> comprasCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropietario")
+    private Collection<Alquileres> alquileresCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAlquilado")
+    private Collection<Alquileres> alquileresCollection1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private Collection<Favoritos> favoritosCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropietario")
-    private Collection<Alquilar> alquilarCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAlquilado")
-    private Collection<Alquilar> alquilarCollection1;
     @JoinColumn(name = "id_rol", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Roles idRol;
@@ -172,21 +172,39 @@ public class Usuarios implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Comprar> getComprarCollection() {
-        return comprarCollection;
+    public Collection<Compras> getComprasCollection() {
+        return comprasCollection;
     }
 
-    public void setComprarCollection(Collection<Comprar> comprarCollection) {
-        this.comprarCollection = comprarCollection;
+    public void setComprasCollection(Collection<Compras> comprasCollection) {
+        this.comprasCollection = comprasCollection;
     }
 
     @XmlTransient
-    public Collection<Comprar> getComprarCollection1() {
-        return comprarCollection1;
+    public Collection<Compras> getComprasCollection1() {
+        return comprasCollection1;
     }
 
-    public void setComprarCollection1(Collection<Comprar> comprarCollection1) {
-        this.comprarCollection1 = comprarCollection1;
+    public void setComprasCollection1(Collection<Compras> comprasCollection1) {
+        this.comprasCollection1 = comprasCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Alquileres> getAlquileresCollection() {
+        return alquileresCollection;
+    }
+
+    public void setAlquileresCollection(Collection<Alquileres> alquileresCollection) {
+        this.alquileresCollection = alquileresCollection;
+    }
+
+    @XmlTransient
+    public Collection<Alquileres> getAlquileresCollection1() {
+        return alquileresCollection1;
+    }
+
+    public void setAlquileresCollection1(Collection<Alquileres> alquileresCollection1) {
+        this.alquileresCollection1 = alquileresCollection1;
     }
 
     @XmlTransient
@@ -196,24 +214,6 @@ public class Usuarios implements Serializable {
 
     public void setFavoritosCollection(Collection<Favoritos> favoritosCollection) {
         this.favoritosCollection = favoritosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Alquilar> getAlquilarCollection() {
-        return alquilarCollection;
-    }
-
-    public void setAlquilarCollection(Collection<Alquilar> alquilarCollection) {
-        this.alquilarCollection = alquilarCollection;
-    }
-
-    @XmlTransient
-    public Collection<Alquilar> getAlquilarCollection1() {
-        return alquilarCollection1;
-    }
-
-    public void setAlquilarCollection1(Collection<Alquilar> alquilarCollection1) {
-        this.alquilarCollection1 = alquilarCollection1;
     }
 
     public Roles getIdRol() {
