@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/santi/UPrOpiedades%20IT/it_g7/propiedades/web/usuario.jsp</file>
-            <file>file:/home/santi/UPrOpiedades%20IT/it_g7/propiedades/web/propiedad.jsp</file>
-            <file>file:/home/santi/UPrOpiedades%20IT/it_g7/propiedades/web/header.jsp</file>
-            <file>file:/home/santi/UPrOpiedades%20IT/it_g7/propiedades/web/login.jsp</file>
-            <file>file:/home/santi/UPrOpiedades%20IT/it_g7/propiedades/src/java/Acciones/verUsuarioAction.java</file>
-            <file>file:/home/santi/UPrOpiedades%20IT/it_g7/propiedades/src/java/struts.xml</file>
-            <file>file:/home/santi/UPrOpiedades%20IT/it_g7/propiedades/src/java/Acciones/editarUsuarioAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/index.css</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/verPropiedadesAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/struts.xml</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/modelo/Visitas.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/index.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/propiedades.jsp</file>
         </group>
     </open-files>
 </project-private>

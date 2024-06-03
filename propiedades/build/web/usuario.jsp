@@ -13,7 +13,7 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Editar Perfil del Usuario</h5>
+                <h5 class="card-title">Editar Perfil de Usuario</h5>
                 <s:form action="editarUsuario" method="POST">
                     <div class="mb-3">
                         <s:textfield name="nombre" value="%{usuario.nombre}" label="Nombre" cssClass="form-control" />

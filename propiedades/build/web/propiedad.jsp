@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 31-may-2024, 16:33:49
-    Author     : migue
---%>
-
 <%@ include file="header.jsp" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,7 +13,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>Título: </strong><s:property value="propiedad.titulo"></s:property></li>
                         <li class="list-group-item"><strong>Descripción: </strong><s:property value="propiedad.descripcion"></s:property></li>
-                        <li class="list-group-item"><strong>Superficie (m2): </strong><s:property value="propiedad.superficie"></s:property></li>
+                        <li class="list-group-item"><strong>Superficie: </strong><s:property value="propiedad.superficie"></s:property> m<sup>2</sup></li>
                         <li class="list-group-item"><strong>Número de habitaciones: </strong><s:property value="propiedad.numeroHabitaciones"></s:property></li>
                         <li class="list-group-item"><strong>Dirección: </strong><s:property value="propiedad.idDireccion.calle + ', ' + propiedad.idDireccion.numero + ', ' + propiedad.idDireccion.ciudad + ', ' + propiedad.idDireccion.provincia + ', ' + propiedad.idDireccion.pais"></s:property></li>
                         <li class="list-group-item"><strong>Código Postal: </strong><s:property value="propiedad.idDireccion.codigoPostal"></s:property></li>

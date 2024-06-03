@@ -98,12 +98,9 @@ public class editarUsuarioAction {
     public String execute() throws Exception {
         DAOUsuarios daoUsuarios = new DAOUsuarios();
 
-        // Obtener el usuario actual
-        GenericType<Usuarios> generic_usuario = new GenericType<Usuarios>() {
-        };
+        GenericType<Usuarios> generic_usuario = new GenericType<Usuarios>() {};
         usuario = daoUsuarios.find_XML(generic_usuario, idUsuario);
 
-        // Modificar los atributos del usuario con los valores recibidos del formulario
         usuario.setNombre(nombre);
         usuario.setApellidos(apellidos);
         usuario.setEmail(email);
@@ -114,7 +111,6 @@ public class editarUsuarioAction {
         Date fecha = formatter.parse(fechaNacimiento);
         usuario.setFechaNacimiento(fecha);
 
-        // Actualizar el usuario en la base de datos
         Object obj_usuario = usuario;
         daoUsuarios.edit_XML(obj_usuario, idUsuario);
         
@@ -124,6 +120,5 @@ public class editarUsuarioAction {
         usuario = dao.find_XML(generic, (idUsuario));
 
         return SUCCESS;
-    }    
-    
+    }   
 }

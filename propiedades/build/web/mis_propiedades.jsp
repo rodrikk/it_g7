@@ -1,9 +1,3 @@
-<%-- 
-    Document   : mis_propiedades
-    Created on : 02-jun-2024, 13:57:42
-    Author     : migue
---%>
-
 <%@ include file="header.jsp" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +8,7 @@
         <div class="container mt-4">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h1>Bienvenidos a UPrOpiedades</h1>
+                    <h1>Mis Propiedades</h1>
                 </div>
             </div>
         </div>
@@ -39,15 +33,21 @@
                         <td><s:property value="#propiedad.descripcion"></s:property></td>
                         <td><s:property value="#propiedad.superficie"></s:property> m2</td>
                         <td><s:property value="#propiedad.numeroHabitaciones"></s:property></td>
-                        <td>
+                            <td>
                             <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST">
-                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"></s:hidden>
+                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"/>
                                 <s:submit name="boton" value="Ver propiedad"></s:submit>
                             </s:form>
                         </td>
                         <td>
+                            <s:form id="formEditarPropiedad" name="formEditarPropiedad" action="formEditarPropiedad" method="POST">
+                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"/>
+                                <s:submit name="boton" value="Editar"></s:submit>
+                            </s:form>
+                        </td>
+                        <td>
                             <s:form id="borrarPropiedad" name="borrarPropiedad" action="borrarPropiedad" method="POST">
-                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"></s:hidden>
+                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"/>
                                 <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                 <s:submit name="boton" value="Borrar"></s:submit>
                             </s:form>

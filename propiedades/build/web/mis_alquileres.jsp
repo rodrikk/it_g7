@@ -1,9 +1,3 @@
-<%-- 
-    Document   : mis_alquileres
-    Created on : 02-jun-2024, 14:10:41
-    Author     : migue
---%>
-
 <%@ include file="header.jsp" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -41,13 +35,13 @@
                         <td><s:property value="#propiedad.numeroHabitaciones"></s:property></td>
                         <td>
                             <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST">
-                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"></s:hidden>
+                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"/>
                                 <s:submit name="boton" value="Ver propiedad"></s:submit>
                             </s:form>
                         </td>
                         <td>
                             <s:form id="borrarPropiedad" name="borrarPropiedad" action="borrarPropiedad" method="POST">
-                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"></s:hidden>
+                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"/>
                                 <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                 <s:submit name="boton" value="Borrar"></s:submit>
                             </s:form>

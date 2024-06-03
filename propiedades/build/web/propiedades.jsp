@@ -65,7 +65,7 @@
                                     </td>
                                     <td>
                                     <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST">
-                                        <s:hidden name="idPropiedad" value="%{#valoracionTotal.idPropiedad.id}"></s:hidden>
+                                        <s:hidden name="idPropiedad" value="%{#valoracionTotal.idPropiedad.id}"/>
                                         <s:submit name="boton" value="Ver propiedad" cssClass="btn btn-primary btn-sm"></s:submit>
                                     </s:form>
                                 </td>
