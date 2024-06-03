@@ -21,6 +21,9 @@
         <action name="valorarPropiedad" class="Acciones.valorarAction">
             <result name="success">/propiedad.jsp</result>
         </action>
+        <action name="editarValoracion" class="Acciones.editarValoracionAction">
+            <result name="success">/propiedad.jsp</result>
+        </action>
         <action name="agregarFavoritos" class="Acciones.agregarFavoritosAction">
             <result name="success">/propiedad.jsp</result>
         </action>
@@ -54,6 +57,18 @@
         </action>
         <action name="editarUsuario" class="Acciones.editarUsuarioAction">
             <result name="success">/usuario.jsp</result>
+        </action>
+        <action name="misAlquileres" class="Acciones.misAlquileresAction">
+            <result name="success">/mis_alquileres.jsp</result>
+        </action>
+        <action name="cancelarAlquiler" class="Acciones.cancelarAlquilerAction">
+            <result name="success">/mis_alquileres.jsp</result>
+        </action>
+        <action name="formAgregarPropiedad" class="Acciones.verOperacionesAction">
+            <result name="success">/agregar_propiedad.jsp</result>
+        </action>
+        <action name="agregarPropiedad" class="Acciones.agregarPropiedadAction">
+            <result name="success">/mis_propiedades.jsp</result>
         </action>
         <!-- <action name="" class="Acciones.verPropiedadesAction">
             <result name="success">/propiedades.jsp</result>

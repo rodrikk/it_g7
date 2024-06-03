@@ -61,6 +61,13 @@ public class Valoraciones implements Serializable {
         this.id = id;
         this.puntuacion = puntuacion;
     }
+    
+    public Valoraciones(Integer id, double puntuacion, Propiedades idPropiedad, Usuarios idValorador) {
+        this.id = id;
+        this.puntuacion = puntuacion;
+        this.idPropiedad = idPropiedad;
+        this.idValorador = idValorador;
+    }
 
     public Integer getId() {
         return id;

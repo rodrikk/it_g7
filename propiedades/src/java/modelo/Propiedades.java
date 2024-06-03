@@ -131,6 +131,19 @@ public class Propiedades implements Serializable {
         this.idOperacion = idOperacion;
     }
 
+    public Propiedades(String titulo, String descripcion, int superficie, int numeroHabitaciones, byte[] foto, double precio, Usuarios idPropietario, Usuarios idInquilino, Direcciones idDireccion, Operaciones idOperacion) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.superficie = superficie;
+        this.numeroHabitaciones = numeroHabitaciones;
+        this.foto = foto;
+        this.precio = precio;
+        this.idPropietario = idPropietario;
+        this.idInquilino = idInquilino;
+        this.idDireccion = idDireccion;
+        this.idOperacion = idOperacion;
+    }
+
     public Integer getId() {
         return id;
     }

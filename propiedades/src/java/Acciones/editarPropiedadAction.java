@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.GenericType;
 import modelo.Direcciones;
+import modelo.Operaciones;
 import modelo.Propiedades;
 import servicios.DAODirecciones;
+import servicios.DAOOperaciones;
 import servicios.DAOPropiedades;
 
 /**
@@ -35,8 +37,10 @@ public class editarPropiedadAction extends ActionSupport {
     private String ciudad = "";
     private String provincia = "";
     private String pais = "";
+    private String idOperacion;
     private Propiedades propiedad;
     private Direcciones direccion;
+    private Operaciones operacion;
     private List<Propiedades> propiedades;
     private String idUsuario = "";
 
@@ -147,6 +151,14 @@ public class editarPropiedadAction extends ActionSupport {
         this.pais = pais;
     }
 
+    public String getIdOperacion() {
+        return idOperacion;
+    }
+
+    public void setIdOperacion(String idOperacion) {
+        this.idOperacion = idOperacion;
+    }
+
     public Propiedades getPropiedad() {
         return propiedad;
     }
@@ -161,6 +173,14 @@ public class editarPropiedadAction extends ActionSupport {
 
     public void setDireccion(Direcciones direccion) {
         this.direccion = direccion;
+    }
+
+    public Operaciones getOperacion() {
+        return operacion;
+    }
+
+    public void setOperacion(Operaciones operacion) {
+        this.operacion = operacion;
     }
 
     public List<Propiedades> getPropiedades() {
@@ -182,6 +202,7 @@ public class editarPropiedadAction extends ActionSupport {
     public String execute() throws Exception {
         DAODirecciones daoDirecciones = new DAODirecciones();
         DAOPropiedades daoPropiedades = new DAOPropiedades();
+        DAOOperaciones daoOperaciones = new DAOOperaciones();
         
         GenericType<Direcciones> generic_direccion;
         generic_direccion = new GenericType<Direcciones> () {};
@@ -198,14 +219,19 @@ public class editarPropiedadAction extends ActionSupport {
         
         propiedad = daoPropiedades.find_XML(generic_propiedad, idPropiedad);
         
-        Propiedades propiedadEditada = new Propiedades(propiedad.getId(), titulo, descripcion, Integer.parseInt(superficie), Integer.parseInt(numeroHabitaciones), propiedad.getFoto(), Double.parseDouble(precio), propiedad.getIdPropietario(), propiedad.getIdInquilino(), direccion, propiedad.getIdOperacion());
+        GenericType<Operaciones> generic_operacion;
+        generic_operacion = new GenericType<Operaciones> () {};
+        
+        operacion = daoOperaciones.find_XML(generic_operacion, idOperacion);
+        
+        Propiedades propiedadEditada = new Propiedades(propiedad.getId(), titulo, descripcion, Integer.parseInt(superficie), Integer.parseInt(numeroHabitaciones), propiedad.getFoto(), Double.parseDouble(precio), propiedad.getIdPropietario(), propiedad.getIdInquilino(), direccionEditada, operacion);
         
         Object obj_propiedad = propiedadEditada;
         daoPropiedades.edit_XML(obj_propiedad, idPropiedad);
         
-        
         GenericType<List<Propiedades>> generic_propiedades;
         generic_propiedades = new GenericType<List<Propiedades>> () {};
+        
         propiedades = daoPropiedades.findAll_XML(generic_propiedades);
         
         for (int i = 0; i < propiedades.size(); i++) {

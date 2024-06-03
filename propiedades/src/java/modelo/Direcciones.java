@@ -94,6 +94,15 @@ public class Direcciones implements Serializable {
         this.provincia = provincia;
         this.pais = pais;
     }
+    
+    public Direcciones(String calle, int numero, int codigoPostal, String ciudad, String provincia, String pais) {
+        this.calle = calle;
+        this.numero = numero;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.pais = pais;
+    }
 
     public Integer getId() {
         return id;

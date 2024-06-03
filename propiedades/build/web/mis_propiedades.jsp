@@ -15,6 +15,11 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+        <s:form id="formAgregarPropiedad" name="formAgregarPropiedad" action="formAgregarPropiedad" method="POST">
+            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
+            <s:submit name="boton" value="Añadir propiedad"></s:submit>
+        </s:form>
+
         <table border="1">
             <thead>
                 <tr>
