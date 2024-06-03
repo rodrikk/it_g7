@@ -15,7 +15,7 @@ import modelo.Valoraciones;
 import modelo.Valoracionestotales;
 import modelo.Visitas;
 
-@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2024-06-02T19:25:18")
+@Generated(value="EclipseLink-2.6.1.v20150605-rNA", date="2024-06-03T11:53:43")
 @StaticMetamodel(Propiedades.class)
 public class Propiedades_ { 
 
