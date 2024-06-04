@@ -49,9 +49,9 @@
                                     <s:submit value="Editar" cssClass="btn btn-warning"/>
                                 </s:form>
                                 <!-- Delete Button -->
-                                <s:form action="deleteSeguro" method="POST">
-                                    <s:hidden name="id" value="%{seguro.id}"/>
-                                    <s:submit value="Eliminar" cssClass="btn btn-danger"/>
+                                <s:form id="deleteSeguro" name="deleteSeguro" action="deleteSeguro" method="POST">
+                                    <s:hidden name="id" value="%{#seguro.id}"/>
+                                    <s:submit name="boton" onclick="return confirm('¿Estás seguro de que quieres eliminar este seguro?');" value="Eliminar" cssClass="btn btn-danger"></s:submit>
                                 </s:form>
                             </div>
                         </div>
