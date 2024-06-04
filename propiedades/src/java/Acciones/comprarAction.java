@@ -119,7 +119,7 @@ public class comprarAction extends ActionSupport {
         Object obj_compra = compra;
         daoCompras.create_XML(obj_compra);
         
-        Propiedades propiedadComprada = new Propiedades(propiedad.getId(), propiedad.getTitulo(), propiedad.getDescripcion(), propiedad.getSuperficie(), propiedad.getNumeroHabitaciones(), propiedad.getFoto(), propiedad.getPrecio(), comprador, null, propiedad.getIdDireccion(), propiedad.getIdOperacion());
+        Propiedades propiedadComprada = new Propiedades(propiedad.getId(), propiedad.getTitulo(), propiedad.getDescripcion(), propiedad.getSuperficie(), propiedad.getNumeroHabitaciones(), propiedad.getFoto(), propiedad.getPrecio(), comprador, propiedad.getIdInquilino(), propiedad.getIdDireccion(), null);
         
         Object obj_propiedad = propiedadComprada;
         daoPropiedades.edit_XML(obj_propiedad, idPropiedad);

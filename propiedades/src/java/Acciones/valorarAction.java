@@ -32,7 +32,6 @@ public class valorarAction extends ActionSupport {
     private Propiedades propiedad;
     private double valoracionTotal;
     private int cont;
-    private boolean existeValoracion;
 
     public valorarAction() {
     }
@@ -109,14 +108,6 @@ public class valorarAction extends ActionSupport {
         this.cont = cont;
     }
 
-    public boolean isExisteValoracion() {
-        return existeValoracion;
-    }
-
-    public void setExisteValoracion(boolean existeValoracion) {
-        this.existeValoracion = existeValoracion;
-    }
-
     public String execute() throws Exception {
         DAOValoraciones daoValoraciones = new DAOValoraciones();
         DAOValoracionesTotales daoValoracionesTotales = new DAOValoracionesTotales();
@@ -170,8 +161,6 @@ public class valorarAction extends ActionSupport {
         daoValoracionesTotales.edit_XML(vTotal, String.valueOf(idValoracion));
         
         propiedad = daoPropiedades.find_XML(generic_propiedad, idPropiedad);
-        
-        existeValoracion = true;
         
         return SUCCESS;
     }

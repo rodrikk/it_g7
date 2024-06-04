@@ -26,25 +26,24 @@
                 </tr>
             </thead>
             <tbody>
-                <s:iterator value="alquileres" var="alquiler">
+                <s:iterator value="propiedades" var="propiedad">
                     <tr>
                         <td><!-- Poner lo necesario para que se vea la imagen --></td>
-                        <td><s:property value="#alquiler.idPropiedad.titulo"></s:property></td>
-                        <td><s:property value="#alquiler.idPropiedad.descripcion"></s:property></td>
-                        <td><s:property value="#alquiler.idPropiedad.superficie"></s:property> m2</td>
-                        <td><s:property value="#alquiler.idPropiedad.numeroHabitaciones"></s:property></td>
+                        <td><s:property value="#propiedad.titulo"></s:property></td>
+                        <td><s:property value="#propiedad.descripcion"></s:property></td>
+                        <td><s:property value="#propiedad.superficie"></s:property> m2</td>
+                        <td><s:property value="#propiedad.numeroHabitaciones"></s:property></td>
                         <td>
                             <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST">
-                                <s:hidden name="idPropiedad" value="%{#alquiler.idPropiedad.id}"/>
+                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"/>
                                 <s:submit name="boton" value="Ver propiedad"></s:submit>
                             </s:form>
                         </td>
                         <td>
-                            <s:form id="cancelarAlquiler" name="cancelarAlquiler" action="cancelarAlquiler" method="POST">
-                                <s:hidden name="idAlquiler" value="%{#alquiler.id}"/>
-                                <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
-                                <s:hidden name="idPropiedad" value="%{#alquiler.idPropiedad.id}"/>
-                                <s:submit name="boton" value="Cancelar alquiler"></s:submit>
+                            <s:form id="borrarPropiedad" name="borrarPropiedad" action="borrarPropiedad" method="POST">
+                                <s:hidden name="idPropiedad" value="%{#propiedad.id}"/>
+                                <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
+                                <s:submit name="boton" value="Borrar"></s:submit>
                             </s:form>
                         </td>
                     </tr>

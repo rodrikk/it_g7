@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Acciones;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
@@ -18,12 +12,8 @@ import servicios.DAOOperaciones;
 import servicios.DAOPropiedades;
 import servicios.DAOUsuarios;
 
-/**
- *
- * @author migue
- */
 public class agregarPropiedadAction extends ActionSupport {
-    
+       
     private String titulo = "";
     private String descripcion = "";
     private String superficie = "";
@@ -36,13 +26,17 @@ public class agregarPropiedadAction extends ActionSupport {
     private String provincia = "";
     private String pais = "";
     private String idOperacion;
+    private Propiedades propiedad;
+    private Direcciones direccion;
     private Operaciones operacion;
     private List<Propiedades> propiedades;
     private String idUsuario = "";
-    private Usuarios propietario;
-    
+    private Usuarios usuario;
+    private Direcciones direccionAgregada;
+
     public agregarPropiedadAction() {
     }
+
 
     public String getTitulo() {
         return titulo;
@@ -140,6 +134,22 @@ public class agregarPropiedadAction extends ActionSupport {
         this.idOperacion = idOperacion;
     }
 
+    public Propiedades getPropiedad() {
+        return propiedad;
+    }
+
+    public void setPropiedad(Propiedades propiedad) {
+        this.propiedad = propiedad;
+    }
+
+    public Direcciones getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direcciones direccion) {
+        this.direccion = direccion;
+    }
+
     public Operaciones getOperacion() {
         return operacion;
     }
@@ -164,13 +174,23 @@ public class agregarPropiedadAction extends ActionSupport {
         this.idUsuario = idUsuario;
     }
 
-    public Usuarios getPropietario() {
-        return propietario;
+    public Usuarios getUsuario() {
+        return usuario;
     }
 
-    public void setPropietario(Usuarios propietario) {
-        this.propietario = propietario;
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
     }
+
+    public Direcciones getDireccionAgregada() {
+        return direccionAgregada;
+    }
+
+    public void setDireccionAgregada(Direcciones direccionAgregada) {
+        this.direccionAgregada = direccionAgregada;
+    }
+    
+    
     
     public String execute() throws Exception {
         DAODirecciones daoDirecciones = new DAODirecciones();
@@ -180,30 +200,46 @@ public class agregarPropiedadAction extends ActionSupport {
         
         GenericType<Direcciones> generic_direccion;
         generic_direccion = new GenericType<Direcciones> () {};
+                
         
-        Direcciones direccionCrear = new Direcciones(calle, Integer.parseInt(numero), Integer.parseInt(codigoPostal), ciudad, provincia, pais);
+        direccionAgregada = new Direcciones(calle, Integer.parseInt(numero), Integer.parseInt(codigoPostal), ciudad, provincia, pais);
         
-        Object obj_direccion = direccionCrear;
+        Object obj_direccion = direccionAgregada;
         daoDirecciones.create_XML(obj_direccion);
+        
+        GenericType<Propiedades> generic_propiedad;
+        generic_propiedad = new GenericType<Propiedades> () {};
+        
+        GenericType<Usuarios> generic_usuario;
+        generic_usuario = new GenericType<Usuarios> () {};
+        
+        usuario = daoUsuarios.find_XML(generic_usuario, idUsuario);
+        
         
         GenericType<Operaciones> generic_operacion;
         generic_operacion = new GenericType<Operaciones> () {};
         
         operacion = daoOperaciones.find_XML(generic_operacion, idOperacion);
         
-        GenericType<Usuarios> generic_usuario;
-        generic_usuario = new GenericType<Usuarios> () {};
+        Propiedades propiedadAgregada = new Propiedades();
         
-        propietario = daoUsuarios.find_XML(generic_usuario, idUsuario);
+        propiedadAgregada.setTitulo(titulo);
+        propiedadAgregada.setDescripcion(descripcion);
+        propiedadAgregada.setSuperficie(Integer.parseInt(superficie));
+        propiedadAgregada.setNumeroHabitaciones(Integer.parseInt(numeroHabitaciones));        
+        propiedadAgregada.setPrecio(Double.parseDouble(precio));
+        propiedadAgregada.setIdPropietario(usuario);
+        propiedadAgregada.setIdDireccion(direccionAgregada);
+        propiedadAgregada.setIdOperacion(operacion);
         
-        Propiedades propiedadCrear = new Propiedades(100, titulo, descripcion, Integer.parseInt(superficie), Integer.parseInt(numeroHabitaciones), null, Double.parseDouble(precio), propietario, null, direccionCrear, operacion);
         
-        Object obj_propiedad = propiedadCrear;
-        daoPropiedades.edit_XML(obj_propiedad, "100");
+        
+        Object obj_propiedad = propiedadAgregada;
+        daoPropiedades.create_XML(obj_propiedad);
+        
         
         GenericType<List<Propiedades>> generic_propiedades;
         generic_propiedades = new GenericType<List<Propiedades>> () {};
-        
         propiedades = daoPropiedades.findAll_XML(generic_propiedades);
         
         for (int i = 0; i < propiedades.size(); i++) {

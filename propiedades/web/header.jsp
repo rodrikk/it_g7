@@ -49,7 +49,7 @@
                                         <a class="nav-link" href="login.jsp">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Registrarse</a>
+                                        <a class="nav-link" href="registrar_usuario.jsp">Registrarse</a>
                                     </li>
                                 </ul>
                             </div>
@@ -70,10 +70,6 @@
                                         <s:form action="verFavoritos" id="verFavoritos" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                             <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Favoritos"></s:submit>
-                                        </s:form>
-                                        <s:form action="misAlquileres" id="misAlquileres" method="POST">
-                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
-                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Mis alquileres"></s:submit>
                                         </s:form>
                                         <s:form action="logout" id="logout" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
