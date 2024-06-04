@@ -33,7 +33,7 @@ public class SegurosAction extends ActionSupport {
     public String execute() {
         try {
             GenericType<List<Seguros>> genericType = new GenericType<List<Seguros>>() {};
-            seguros = daoSeguros.findAll_JSON(genericType);
+            seguros = daoSeguros.findAll_XML(genericType);
             return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();

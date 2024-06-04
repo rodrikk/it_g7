@@ -95,6 +95,7 @@
         </action>
         <action name="listSeguros" class="Acciones.SegurosAction">
             <result name="success">/seguros.jsp</result>
+            <result name="error">/error.jsp</result>
         </action>
         <action name="editVisita" class="Acciones.SegurosAction" method="edit">
             <result name="success">/editSeguro.jsp</result>
