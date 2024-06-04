@@ -82,5 +82,27 @@
         <action name="nuevoUsuario" class="Acciones.nuevoUsuarioAction">
             <result name="success">/login.jsp</result>
         </action>
+        <action name="listVisitas" class="Acciones.VisitasAction">
+            <result name="success">/visitas.jsp</result>
+        </action>
+        <action name="editVisita" class="Acciones.VisitasAction" method="edit">
+            <result name="success">/editVisita.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="deleteVisita" class="Acciones.VisitasAction" method="delete">
+            <result name="success">listVisitas</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="listSeguros" class="Acciones.SegurosAction">
+            <result name="success">/seguros.jsp</result>
+        </action>
+        <action name="editVisita" class="Acciones.SegurosAction" method="edit">
+            <result name="success">/editSeguro.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="deleteVisita" class="Acciones.SegurosAction" method="delete">
+            <result name="success">listSeguros</result>
+            <result name="error">/error.jsp</result>
+        </action>
     </package>
 </struts>
