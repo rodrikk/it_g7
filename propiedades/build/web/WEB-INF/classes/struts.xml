@@ -97,11 +97,11 @@
             <result name="success">/seguros.jsp</result>
             <result name="error">/error.jsp</result>
         </action>
-        <action name="editVisita" class="Acciones.SegurosAction" method="edit">
+        <action name="editSeguro" class="Acciones.SegurosAction" method="edit">
             <result name="success">/editSeguro.jsp</result>
             <result name="error">/error.jsp</result>
         </action>
-        <action name="deleteVisita" class="Acciones.SegurosAction" method="delete">
+        <action name="deleteSeguro" class="Acciones.SegurosAction" method="delete">
             <result name="success">listSeguros</result>
             <result name="error">/error.jsp</result>
         </action>

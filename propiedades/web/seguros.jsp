@@ -50,7 +50,7 @@
                                 </s:form>
                                 <!-- Delete Button -->
                                 <s:form action="deleteSeguro" method="POST">
-                                    <s:hidden name="id" value="%{#seguro.id}"/>
+                                    <s:hidden name="id" value="%{seguro.id}"/>
                                     <s:submit value="Eliminar" cssClass="btn btn-danger"/>
                                 </s:form>
                             </div>

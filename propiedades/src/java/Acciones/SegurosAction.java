@@ -144,6 +144,7 @@ public class SegurosAction extends ActionSupport {
     public String delete() {
         try {
             daoSeguros.remove(String.valueOf(id));
+            System.out.println(id);
             return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
