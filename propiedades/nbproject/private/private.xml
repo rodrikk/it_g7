@@ -3,11 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/index.css</file>
-            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/verPropiedadesAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/servicios/DAOValoracionesTotales.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/agregarPropiedadAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/modelo/Valoracionestotales.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/loginAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/registrar_usuario.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/header.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/misPropiedadesAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/nuevoUsuarioAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/editarAlquilerAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/modelo/Propiedades.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/agregarFavoritosAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/alquilerAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/verUsuarioAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/borrarPropiedadAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/pruebaAction.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/servicios/DAOValoraciones.java</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/Acciones/editarPropiedadAction.java</file>
             <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/struts.xml</file>
-            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/src/java/modelo/Visitas.java</file>
             <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/index.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/mis_propiedades.jsp</file>
             <file>file:/C:/Users/migue/Desktop/UPO/IT/it_g7/propiedades/web/propiedades.jsp</file>
         </group>
     </open-files>

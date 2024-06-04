@@ -5,10 +5,7 @@ import java.util.List;
 import javax.ws.rs.core.GenericType;
 import modelo.Propiedades;
 import servicios.DAOPropiedades;
-/**
- *
- * @author migue
- */
+
 public class verPropiedadesAction extends ActionSupport {
     
     private List<Propiedades> propiedades;

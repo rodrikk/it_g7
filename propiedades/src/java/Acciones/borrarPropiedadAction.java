@@ -1,6 +1,7 @@
 package Acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
 import modelo.Propiedades;
@@ -16,6 +17,7 @@ public class borrarPropiedadAction extends ActionSupport {
     private String idPropiedad = "";
     private String idUsuario = "";
     private String boton = "";
+    private List<Propiedades> misPropiedades = new ArrayList<>();
 
     public borrarPropiedadAction() {
     }
@@ -52,6 +54,14 @@ public class borrarPropiedadAction extends ActionSupport {
         this.boton = boton;
     }
 
+    public List<Propiedades> getMisPropiedades() {
+        return misPropiedades;
+    }
+
+    public void setMisPropiedades(List<Propiedades> misPropiedades) {
+        this.misPropiedades = misPropiedades;
+    }
+
     public String execute() throws Exception {
         DAOPropiedades daoPropiedades = new DAOPropiedades();
         GenericType<List<Propiedades>> generic;
@@ -62,8 +72,8 @@ public class borrarPropiedadAction extends ActionSupport {
         propiedades = daoPropiedades.findAll_XML(generic);
         
         for (int i = 0; i < propiedades.size(); i++) {
-            if (propiedades.get(i).getIdPropietario().getId() != Integer.parseInt(idUsuario)) {
-                propiedades.remove(propiedades.get(i));
+            if (propiedades.get(i).getIdPropietario().getId() == Integer.parseInt(idUsuario)) {
+                misPropiedades.add(propiedades.get(i));
             }
         }
         

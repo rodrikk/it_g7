@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Acciones;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -19,10 +14,6 @@ import servicios.DAOFavoritos;
 import servicios.DAOPropiedades;
 import servicios.DAOUsuarios;
 
-/**
- *
- * @author migue
- */
 public class borrarFavoritosAction extends ActionSupport implements ServletRequestAware {
 
     private HttpServletRequest request;

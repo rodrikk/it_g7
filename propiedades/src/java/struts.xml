@@ -21,6 +21,12 @@
         <action name="valorarPropiedad" class="Acciones.valorarAction">
             <result name="success">/propiedad.jsp</result>
         </action>
+        <action name="editarValoracion" class="Acciones.editarValoracionAction">
+            <result name="success">/propiedad.jsp</result>
+        </action>
+        <action name="borrarValoracion" class="Acciones.borrarValoracionAction">
+            <result name="success">/propiedad.jsp</result>
+        </action>
         <action name="agregarFavoritos" class="Acciones.agregarFavoritosAction">
             <result name="success">/propiedad.jsp</result>
         </action>
@@ -55,27 +61,26 @@
         <action name="editarUsuario" class="Acciones.editarUsuarioAction">
             <result name="success">/usuario.jsp</result>
         </action>
-        <!-- <action name="" class="Acciones.verPropiedadesAction">
-            <result name="success">/propiedades.jsp</result>
+        <action name="borrarUsuario" class="Acciones.borrarUsuarioAction">
+            <result name="success">/index.jsp</result>
         </action>
-        <action name="" class="Acciones.verPropiedadesAction">
-            <result name="success">/propiedades2.jsp</result>
+        <action name="misAlquileres" class="Acciones.misAlquileresAction">
+            <result name="success">/mis_alquileres.jsp</result>
         </action>
-        
-        <action name="" class="Acciones.verValoracionesAction">
-            <result name="success">/propiedades.jsp</result>
+        <action name="cancelarAlquiler" class="Acciones.cancelarAlquilerAction">
+            <result name="success">/mis_alquileres.jsp</result>
         </action>
-        <action name="" class="Acciones.verPropiedadesAction">
-            <result name="success">/propiedades.jsp</result>
-        </action> -->
-        <action name="agregarPropiedad" class="Acciones.agregarPropiedadAction">
-            <result name="success">/mis_propiedades.jsp</result>
+        <action name="editarAlquiler" class="Acciones.editarAlquilerAction">
+            <result name="success">/mis_alquileres.jsp</result>
         </action>
         <action name="formAgregarPropiedad" class="Acciones.verOperacionesAction">
             <result name="success">/agregar_propiedad.jsp</result>
         </action>
-        <action name="registrarUsuario" class="Acciones.registrarUsuarioAction">
-            <result name="success">/propiedades.jsp</result>
+        <action name="agregarPropiedad" class="Acciones.agregarPropiedadAction">
+            <result name="success">/mis_propiedades.jsp</result>
+        </action>
+        <action name="nuevoUsuario" class="Acciones.nuevoUsuarioAction">
+            <result name="success">/login.jsp</result>
         </action>
     </package>
 </struts>

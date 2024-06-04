@@ -5,10 +5,7 @@ import java.util.List;
 import javax.ws.rs.core.GenericType;
 import modelo.Favoritos;
 import servicios.DAOFavoritos;
-/**
- *
- * @author migue
- */
+
 public class verFavoritosAction extends ActionSupport {
     
     private List<Favoritos> favoritos;

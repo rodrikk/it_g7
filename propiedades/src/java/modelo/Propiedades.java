@@ -130,7 +130,7 @@ public class Propiedades implements Serializable {
         this.idDireccion = idDireccion;
         this.idOperacion = idOperacion;
     }
-    
+
     public Propiedades(String titulo, String descripcion, int superficie, int numeroHabitaciones, byte[] foto, double precio, Usuarios idPropietario, Usuarios idInquilino, Direcciones idDireccion, Operaciones idOperacion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -143,7 +143,6 @@ public class Propiedades implements Serializable {
         this.idDireccion = idDireccion;
         this.idOperacion = idOperacion;
     }
-
 
     public Integer getId() {
         return id;

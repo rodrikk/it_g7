@@ -26,35 +26,30 @@
     </head>
     <body>
         <div class="container">
-            <s:if test="%{!error.isEmpty}">
-                <div class="alert alert-danger" role="alert">
-                    Mensaje de error: <s:property value="error"/>
-                </div>
-            </s:if>
             <div class="register-container shadow p-4">
                 <h2 class="text-center">Registro de Usuario</h2>
-                <s:form id="registrarUsuario" name="registrarUsuario" action="registrarUsuario" method="POST">
+                <s:form id="nuevoUsuario" name="nuevoUsuario" action="nuevoUsuario" method="POST">
                     <div class="mb-3">
-                        <s:textfield id="nombre" name="nombre" cssClass="form-control" label="Nombre" />
+                        <s:textfield id="nombre" name="nombre" cssClass="form-control" label="Nombre"/>
                     </div>
                     <div class="mb-3">
-                        <s:textfield id="apellidos" name="apellidos" cssClass="form-control" label="Apellidos" />
+                        <s:textfield id="apellidos" name="apellidos" cssClass="form-control" label="Apellidos"/>
                     </div>
                     <div class="mb-3">
-                        <s:textfield id="email" name="email" cssClass="form-control" label="Email" />
+                        <s:textfield id="email" name="email" cssClass="form-control" label="Email"/>
                     </div>
                     <div class="mb-3">
-                        <s:password id="password" name="password" cssClass="form-control" label="Contraseña" />
+                        <s:password id="password" name="password" cssClass="form-control" label="Contraseña"/>
                     </div>
                     <div class="mb-3">
-                        <s:textfield id="telefono" name="telefono" cssClass="form-control" label="Teléfono" />
+                        <s:textfield id="telefono" name="telefono" cssClass="form-control" label="Teléfono"/>
                     </div>
                     <div class="mb-3">
                         <label for="fecha">Fecha de nacimiento:</label>
                         <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br/>
                     </div>
                     <div class="d-grid">
-                        <s:submit cssClass="btn btn-primary" value="Registrarse" />
+                        <s:submit cssClass="btn btn-primary" value="Registrarse"/>
                     </div>
                 </s:form>
                 <div class="d-grid mt-3">
@@ -62,7 +57,6 @@
                 </div>
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

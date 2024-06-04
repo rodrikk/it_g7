@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -11,10 +6,6 @@ import javax.ws.rs.core.GenericType;
 import modelo.Usuarios;
 import servicios.DAOUsuarios;
 
-/**
- *
- * @author migue
- */
 public class verUsuarioAction extends ActionSupport {
 
     private Usuarios usuario;

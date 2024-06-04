@@ -1,19 +1,23 @@
 package Acciones;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
 import modelo.Direcciones;
 import modelo.Operaciones;
 import modelo.Propiedades;
 import modelo.Usuarios;
+import modelo.Valoracionestotales;
 import servicios.DAODirecciones;
 import servicios.DAOOperaciones;
 import servicios.DAOPropiedades;
 import servicios.DAOUsuarios;
+import servicios.DAOValoracionesTotales;
 
 public class agregarPropiedadAction extends ActionSupport {
-       
+    
     private String titulo = "";
     private String descripcion = "";
     private String superficie = "";
@@ -26,17 +30,15 @@ public class agregarPropiedadAction extends ActionSupport {
     private String provincia = "";
     private String pais = "";
     private String idOperacion;
-    private Propiedades propiedad;
-    private Direcciones direccion;
     private Operaciones operacion;
     private List<Propiedades> propiedades;
     private String idUsuario = "";
-    private Usuarios usuario;
-    private Direcciones direccionAgregada;
-
+    private Usuarios propietario;
+    private Valoracionestotales valoracionTotal;
+    private List<Propiedades> misPropiedades = new ArrayList<>();
+    
     public agregarPropiedadAction() {
     }
-
 
     public String getTitulo() {
         return titulo;
@@ -134,22 +136,6 @@ public class agregarPropiedadAction extends ActionSupport {
         this.idOperacion = idOperacion;
     }
 
-    public Propiedades getPropiedad() {
-        return propiedad;
-    }
-
-    public void setPropiedad(Propiedades propiedad) {
-        this.propiedad = propiedad;
-    }
-
-    public Direcciones getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(Direcciones direccion) {
-        this.direccion = direccion;
-    }
-
     public Operaciones getOperacion() {
         return operacion;
     }
@@ -174,77 +160,72 @@ public class agregarPropiedadAction extends ActionSupport {
         this.idUsuario = idUsuario;
     }
 
-    public Usuarios getUsuario() {
-        return usuario;
+    public Usuarios getPropietario() {
+        return propietario;
     }
 
-    public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+    public void setPropietario(Usuarios propietario) {
+        this.propietario = propietario;
     }
 
-    public Direcciones getDireccionAgregada() {
-        return direccionAgregada;
+    public Valoracionestotales getValoracionTotal() {
+        return valoracionTotal;
     }
 
-    public void setDireccionAgregada(Direcciones direccionAgregada) {
-        this.direccionAgregada = direccionAgregada;
+    public void setValoracionTotal(Valoracionestotales valoracionTotal) {
+        this.valoracionTotal = valoracionTotal;
     }
-    
-    
+
+    public List<Propiedades> getMisPropiedades() {
+        return misPropiedades;
+    }
+
+    public void setMisPropiedades(List<Propiedades> misPropiedades) {
+        this.misPropiedades = misPropiedades;
+    }
     
     public String execute() throws Exception {
         DAODirecciones daoDirecciones = new DAODirecciones();
         DAOPropiedades daoPropiedades = new DAOPropiedades();
         DAOOperaciones daoOperaciones = new DAOOperaciones();
         DAOUsuarios daoUsuarios = new DAOUsuarios();
+        DAOValoracionesTotales daoValoracionesTotales = new DAOValoracionesTotales();
         
         GenericType<Direcciones> generic_direccion;
         generic_direccion = new GenericType<Direcciones> () {};
-                
         
-        direccionAgregada = new Direcciones(calle, Integer.parseInt(numero), Integer.parseInt(codigoPostal), ciudad, provincia, pais);
+        Direcciones direccionCrear = new Direcciones(calle, Integer.parseInt(numero), Integer.parseInt(codigoPostal), ciudad, provincia, pais);
         
-        Object obj_direccion = direccionAgregada;
+        Object obj_direccion = direccionCrear;
         daoDirecciones.create_XML(obj_direccion);
-        
-        GenericType<Propiedades> generic_propiedad;
-        generic_propiedad = new GenericType<Propiedades> () {};
-        
-        GenericType<Usuarios> generic_usuario;
-        generic_usuario = new GenericType<Usuarios> () {};
-        
-        usuario = daoUsuarios.find_XML(generic_usuario, idUsuario);
-        
         
         GenericType<Operaciones> generic_operacion;
         generic_operacion = new GenericType<Operaciones> () {};
         
         operacion = daoOperaciones.find_XML(generic_operacion, idOperacion);
         
-        Propiedades propiedadAgregada = new Propiedades();
+        GenericType<Usuarios> generic_usuario;
+        generic_usuario = new GenericType<Usuarios> () {};
         
-        propiedadAgregada.setTitulo(titulo);
-        propiedadAgregada.setDescripcion(descripcion);
-        propiedadAgregada.setSuperficie(Integer.parseInt(superficie));
-        propiedadAgregada.setNumeroHabitaciones(Integer.parseInt(numeroHabitaciones));        
-        propiedadAgregada.setPrecio(Double.parseDouble(precio));
-        propiedadAgregada.setIdPropietario(usuario);
-        propiedadAgregada.setIdDireccion(direccionAgregada);
-        propiedadAgregada.setIdOperacion(operacion);
+        propietario = daoUsuarios.find_XML(generic_usuario, idUsuario);
         
+        Propiedades propiedadCrear = new Propiedades(100, titulo, descripcion, Integer.parseInt(superficie), Integer.parseInt(numeroHabitaciones), null, Double.parseDouble(precio), propietario, null, direccionCrear, operacion);
         
+        Object obj_propiedad = propiedadCrear;
+        daoPropiedades.edit_XML(obj_propiedad, "100");
         
-        Object obj_propiedad = propiedadAgregada;
-        daoPropiedades.create_XML(obj_propiedad);
+        valoracionTotal = new Valoracionestotales(0, propiedadCrear);
         
+        daoValoracionesTotales.edit_XML(valoracionTotal, "100");
         
         GenericType<List<Propiedades>> generic_propiedades;
         generic_propiedades = new GenericType<List<Propiedades>> () {};
+        
         propiedades = daoPropiedades.findAll_XML(generic_propiedades);
         
         for (int i = 0; i < propiedades.size(); i++) {
-            if (propiedades.get(i).getIdPropietario().getId() != Integer.parseInt(idUsuario)) {
-                propiedades.remove(propiedades.get(i));
+            if (propiedades.get(i).getIdPropietario().getId() == Integer.parseInt(idUsuario)) {
+                misPropiedades.add(propiedades.get(i));
             }
         }
         

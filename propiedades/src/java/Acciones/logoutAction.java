@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Acciones;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -16,10 +11,6 @@ import modelo.Valoracionestotales;
 import servicios.DAOUsuarios;
 import servicios.DAOValoracionesTotales;
 
-/**
- *
- * @author migue
- */
 public class logoutAction extends ActionSupport {
 
     public logoutAction() {

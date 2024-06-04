@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Acciones;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -119,7 +114,7 @@ public class comprarAction extends ActionSupport {
         Object obj_compra = compra;
         daoCompras.create_XML(obj_compra);
         
-        Propiedades propiedadComprada = new Propiedades(propiedad.getId(), propiedad.getTitulo(), propiedad.getDescripcion(), propiedad.getSuperficie(), propiedad.getNumeroHabitaciones(), propiedad.getFoto(), propiedad.getPrecio(), comprador, propiedad.getIdInquilino(), propiedad.getIdDireccion(), null);
+        Propiedades propiedadComprada = new Propiedades(propiedad.getId(), propiedad.getTitulo(), propiedad.getDescripcion(), propiedad.getSuperficie(), propiedad.getNumeroHabitaciones(), propiedad.getFoto(), propiedad.getPrecio(), comprador, null, propiedad.getIdDireccion(), propiedad.getIdOperacion());
         
         Object obj_propiedad = propiedadComprada;
         daoPropiedades.edit_XML(obj_propiedad, idPropiedad);

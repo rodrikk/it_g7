@@ -36,6 +36,10 @@
                     <s:hidden name="idUsuario" value="%{usuario.id}" />
                     <s:submit value="Actualizar" cssClass="btn btn-primary" />
                 </s:form>
+                <s:form action="borrarUsuario" method="POST">
+                    <s:hidden name="idUsuario" value="%{usuario.id}" />
+                    <s:submit value="Borrar cuenta" cssClass="btn btn-primary" />
+                </s:form>
             </div>
         </div>
     </div>
