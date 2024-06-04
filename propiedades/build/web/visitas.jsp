@@ -48,8 +48,6 @@
                                     <s:hidden name="id" value="%{#visita.id}"></s:hidden>
                                     <s:submit name="boton" value="Editar"></s:submit>
                                 </s:form>
-                            </td>
-                            <td>
                                 <s:form id="deleteVisita" name="deleteVisita" action="deleteVisita" method="POST">
                                     <s:hidden name="id" value="%{#visita.id}"></s:hidden>
                                     <s:submit name="boton" value="Eliminar" onclick="return confirm('¿Estás seguro de que quieres eliminar esta visita?');"></s:submit>

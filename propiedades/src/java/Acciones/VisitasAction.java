@@ -29,7 +29,7 @@ public class VisitasAction extends ActionSupport {
     public String execute() {
         try {
             GenericType<List<Visitas>> genericType = new GenericType<List<Visitas>>() {};
-            visitas = daoVisitas.findAll_JSON(genericType);
+            visitas = daoVisitas.findAll_XML(genericType);
             return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
