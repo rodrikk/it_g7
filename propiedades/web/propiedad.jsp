@@ -4,15 +4,15 @@
 <!DOCTYPE html>
 <html lang="es">
     <body>
-        <section class="propiedad">
+        <section class="p-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 my-3">
-                        <img src="<s:property value="propiedad.foto"></s:property>"/>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Título: </strong><s:property value="propiedad.titulo"></s:property></li>
+                        <img class="img-fluid" src="<s:property value="propiedad.foto"></s:property>"/>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Título: </strong><s:property value="propiedad.titulo"></s:property></li>
                             <li class="list-group-item"><strong>Descripción: </strong><s:property value="propiedad.descripcion"></s:property></li>
                             <li class="list-group-item"><strong>Superficie: </strong><s:property value="propiedad.superficie"></s:property> m<sup>2</sup></li>
                             <li class="list-group-item"><strong>Número de habitaciones: </strong><s:property value="propiedad.numeroHabitaciones"></s:property></li>
@@ -28,7 +28,7 @@
                                 </c:choose>
 
                             <s:if test="%{#session.idUsuario != propiedad.idPropietario.id}">
-                                <li>
+                                <li style="list-style: none;">
                                     <s:if test="%{existeValoracion}">
                                         <s:form id="editarValoracion" name="editarValoracion" action="editarValoracion" method="POST">
                                             <label for="rating">Valoración:</label>
@@ -42,13 +42,13 @@
                                             </select>
                                             <s:hidden name="idPropiedad" value="%{propiedad.id}" />
                                             <s:hidden name="idValorador" value="%{#session.idUsuario}" />
-                                            <s:submit name="boton" value="Editar valoración" />
+                                            <s:submit name="boton" value="Editar valoración" cssClass="btn btn-primary" />
                                         </s:form>
 
                                         <s:form id="borrarValoracion" name="borrarValoracion" action="borrarValoracion" method="POST">
                                             <s:hidden name="idPropiedad" value="%{propiedad.id}" />
                                             <s:hidden name="idValorador" value="%{#session.idUsuario}" />
-                                            <s:submit name="boton" value="Borrar valoración" />
+                                            <s:submit name="boton" value="Borrar valoración" cssClass="btn btn-danger" />
                                         </s:form>
                                     </s:if>
                                     <s:else>
@@ -64,7 +64,7 @@
                                             </select>
                                             <s:hidden name="idPropiedad" value="%{propiedad.id}" />
                                             <s:hidden name="idValorador" value="%{#session.idUsuario}" />
-                                            <s:submit name="boton" value="Valorar" />
+                                            <s:submit name="boton" value="Valorar" cssClass="btn btn-success" />
                                         </s:form>
                                     </s:else>
 
@@ -74,12 +74,12 @@
                                             <s:hidden name="idPropiedad" value="%{propiedad.id}" />
                                             <s:hidden name="idPropietario" value="%{propiedad.idPropietario.id}" />
                                             <s:hidden name="idComprador" value="%{#session.idUsuario}" />
-                                            <s:submit name="boton" value="Comprar" />
+                                            <s:submit name="boton" value="Comprar" cssClass="btn btn-primary" />
                                         </s:form>
                                     </s:if>
                                     <s:elseif test="%{propiedad.idOperacion.id == 2}">
                                         <s:if test="%{propiedad.idInquilino == null}">
-                                            <button onclick="mostrarFormulario()">Alquilar</button>
+                                            <button onclick="mostrarFormulario()" class="btn btn-primary">Alquilar</button>
                                             <s:form id="alquilarPropiedad" name="alquilarPropiedad" action="alquilarPropiedad" method="POST" style="display: none;">
                                                 <label for="fecha">Fecha inicio:</label>
                                                 <input type="date" id="fechaInicio" name="fechaInicio" required><br/>
@@ -88,7 +88,7 @@
                                                 <s:hidden name="idPropiedad" value="%{propiedad.id}" />
                                                 <s:hidden name="idPropietario" value="%{propiedad.idPropietario.id}" />
                                                 <s:hidden name="idAlquilado" value="%{#session.idUsuario}" />
-                                                <s:submit name="boton" value="Confirmar alquiler" />
+                                                <s:submit name="boton" value="Confirmar alquiler" cssClass="btn btn-primary" />
                                             </s:form>
                                         </s:if>
                                         <s:else>
@@ -104,15 +104,14 @@
                                 <s:form id="borrarFavoritos" name="borrarFavoritos" action="borrarFavoritos" method="POST">
                                     <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                     <s:hidden name="idPropiedad" value="%{propiedad.id}" />
-                                    <s:submit name="boton" value="Eliminar de favoritos"></s:submit>
+                                    <s:submit name="boton" value="Eliminar de favoritos" cssClass="btn btn-danger" />
                                 </s:form>
                             </s:if>
                             <s:else>
                                 <s:form id="agregarFavoritos" name="agregarFavoritos" action="agregarFavoritos" method="POST">
                                     <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                     <s:hidden name="idPropiedad" value="%{propiedad.id}" />
-                                    <s:submit value="Añadir a favoritos"></s:submit>
-                                </s:form>
+                                    <s:submit value="Añadir a favoritos" cssClass="btn btn-success" />                                </s:form>
                             </s:else>
                         </ul>
                     </div>
