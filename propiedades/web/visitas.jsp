@@ -44,7 +44,7 @@
                             <td><s:property value="#visita.idVisitante.id"></s:property></td>
                             <td><s:property value="#visita.idVisitante.nombre"></s:property></td>
                             <td>
-                                <s:form id="editVisita" name="editVisita" action="editVisita" method="POST">
+                                <s:form id="viewEditarVisita" name="viewEditarVisita" action="viewEditarVisita" method="POST">
                                     <s:hidden name="id" value="%{#visita.id}"></s:hidden>
                                     <s:submit name="boton" value="Editar"></s:submit>
                                 </s:form>

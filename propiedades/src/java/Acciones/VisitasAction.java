@@ -114,6 +114,12 @@ public class VisitasAction extends ActionSupport {
         
         return SUCCESS;
     }
+    
+    public String viewEdit() {
+        GenericType<Visitas> generic_seguro = new GenericType<Visitas>() {};
+        visita = daoVisitas.find_XML(generic_seguro, String.valueOf(id));
+        return SUCCESS;
+    }
 
     public String delete() {
         try {

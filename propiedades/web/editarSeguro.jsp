@@ -21,7 +21,6 @@
         <s:form id="editSeguro" name="editSeguro" action="editSeguro" method="POST" cssClass="form-horizontal">
             <!-- Hidden fields for ID -->
             <s:hidden name="id" value="%{seguro.id}" />
-            <s:property value="seguro" />
             <!-- Cobertura -->
             <div class="mb-3">
                 <s:textfield label="Cobertura" name="cobertura" id="cobertura" value="%{seguro.cobertura}" cssClass="form-control"/>

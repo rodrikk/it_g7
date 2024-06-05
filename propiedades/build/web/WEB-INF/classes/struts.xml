@@ -85,12 +85,15 @@
         <action name="listVisitas" class="Acciones.VisitasAction">
             <result name="success">/visitas.jsp</result>
         </action>
+        <action name="viewEditarVisita" class="Acciones.VisitasAction" method="viewEdit">
+            <result name="success">/editarVisitas.jsp</result>
+        </action>
         <action name="editVisita" class="Acciones.VisitasAction" method="edit">
-            <result name="success">/editVisita.jsp</result>
+            <result name="success" type="redirectAction">listVisitas</result>
             <result name="error">/error.jsp</result>
         </action>
         <action name="deleteVisita" class="Acciones.VisitasAction" method="delete">
-            <result name="success">/visitas.jsp</result>
+            <result name="success" type="redirectAction">listVisitas</result>
             <result name="error">/error.jsp</result>
         </action>
         <action name="listSeguros" class="Acciones.SegurosAction">
