@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -16,7 +16,7 @@
         <div class="container my-5">
             <h1 class="text-center mb-4">Seguros de UPrOpiedades</h1>
 
-                    <c:forEach var="seguro" items="${seguros}">
+                    <s:iterator var="seguro" value="seguros">
                         <h2>Seguro ID: ${seguro.id}</h2>
                         <div class="card">
                             <div class="card-header bg-primary text-white">Seguro ${seguro.id}</div>
@@ -38,15 +38,9 @@
                                     <li><strong>Inquilino ID:</strong> ${seguro.idInquilino.id}</li>
                                 </ul>
                                 <!-- Edit Button -->
-                                <s:form action="editSeguro" method="POST">
+                                <s:form name="viewEditarSeguro" id="viewEditarSeguro" action="viewEditarSeguro" method="POST">
                                     <s:hidden name="id" value="%{#seguro.id}"/>
-                                    <s:hidden name="cobertura" value="%{#seguro.cobertura}"/>
-                                    <s:hidden name="tarifa" value="%{#seguro.tarifa}"/>
-                                    <s:hidden name="fechaInicio" value="%{#seguro.fechaInicio}"/>
-                                    <s:hidden name="fechaFin" value="%{#seguro.fechaFin}"/>
-                                    <s:hidden name="idPropiedad" value="%{#seguro.idPropiedad.id}"/>
-                                    <s:hidden name="idInquilino" value="%{#seguro.idInquilino.id}"/>
-                                    <s:submit value="Editar" cssClass="btn btn-warning"/>
+                                    <s:submit name="boton" value="Editar" cssClass="btn btn-warning"/>
                                 </s:form>
                                 <!-- Delete Button -->
                                 <s:form id="deleteSeguro" name="deleteSeguro" action="deleteSeguro" method="POST">
@@ -55,7 +49,7 @@
                                 </s:form>
                             </div>
                         </div>
-                    </c:forEach>
+                    </s:iterator>
                 </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

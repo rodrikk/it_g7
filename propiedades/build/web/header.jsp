@@ -32,10 +32,13 @@
                                     <a class="nav-link" href="#">Propietarios</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Seguros</a>
+                                    <a class="nav-link" href="listSeguros">Seguros</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Valoraciones</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="listVisitas">Visitas</a>
                                 </li>
                             </ul>
                         </div>

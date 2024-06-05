@@ -97,12 +97,15 @@
             <result name="success">/seguros.jsp</result>
             <result name="error">/error.jsp</result>
         </action>
+        <action name="viewEditarSeguro" class="Acciones.SegurosAction" method="viewEdit">
+            <result name="success">/editarSeguro.jsp</result>
+        </action>
         <action name="editSeguro" class="Acciones.SegurosAction" method="edit">
-            <result name="success">/editSeguro.jsp</result>
+            <result name="success" type="redirectAction">listSeguros</result>
             <result name="error">/error.jsp</result>
         </action>
         <action name="deleteSeguro" class="Acciones.SegurosAction" method="delete">
-            <result name="success">/seguros.jsp</result>
+            <result name="success" type="redirectAction">listSeguros</result>
             <result name="error">/error.jsp</result>
         </action>
     </package>

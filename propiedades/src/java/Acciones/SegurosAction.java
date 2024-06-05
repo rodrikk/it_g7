@@ -1,6 +1,7 @@
 package Acciones;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,8 +20,8 @@ public class SegurosAction extends ActionSupport {
     private Seguros seguro;
     private String cobertura;
     private double tarifa;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private String fechaInicio;
+    private String fechaFin;
     private int idPropiedad;
     private int idInquilino;
 
@@ -73,19 +74,19 @@ public class SegurosAction extends ActionSupport {
         this.tarifa = tarifa;
     }
 
-    public Date getFechaInicio() {
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
+    public String getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -120,8 +121,13 @@ public class SegurosAction extends ActionSupport {
 
             seguro.setCobertura(cobertura);
             seguro.setTarifa(tarifa);
-            seguro.setFechaInicio(fechaInicio);
-            seguro.setFechaFin(fechaFin);
+            
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date ini = format.parse(fechaInicio);
+            
+            seguro.setFechaInicio(ini);
+            ini = format.parse(fechaFin);
+            seguro.setFechaFin(ini);
 
             DAOPropiedades daoPropiedades = new DAOPropiedades();
             GenericType<Propiedades> generic_propiedad = new GenericType<Propiedades>() {};
@@ -139,6 +145,12 @@ public class SegurosAction extends ActionSupport {
             e.printStackTrace();
             return ERROR;
         }
+    }
+    
+    public String viewEdit() {
+        GenericType<Seguros> generic_seguro = new GenericType<Seguros>() {};
+        seguro = daoSeguros.find_XML(generic_seguro, String.valueOf(id));
+        return SUCCESS;
     }
 
     public String delete() {
