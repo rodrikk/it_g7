@@ -36,7 +36,7 @@
                             <th>Superficie</th>
                             <th>Habitaciones</th>
                             <th>Valoración</th>
-                            <s:if test="%{#session.idUsuario}">
+                            <s:if test="%{#session.usuario != null}">
                                 <th>Acciones</th>
                             </s:if>
                         </tr>
@@ -58,7 +58,7 @@
                                         <i class="bi bi-star-fill star" id="<s:property value="'5' + #valoracionTotal.id"></s:property>" value="5"></i>
                                     </div>
                                 </td>
-                                <s:if test="%{#session.idUsuario}">
+                                <s:if test="%{#session.usuario != null}">
                                     <td>
                                         <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST" cssClass="d-inline">
                                             <s:hidden name="idPropiedad" value="%{#valoracionTotal.idPropiedad.id}"/>

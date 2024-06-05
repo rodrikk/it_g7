@@ -31,6 +31,7 @@ public class logoutAction extends ActionSupport {
         
         Map session = (Map) ActionContext.getContext().get("session");
         session.remove("usuario");
+        session.remove("idUsuario");
 
         GenericType<List<Valoracionestotales>> generic_valoracionesTotales;
         generic_valoracionesTotales = new GenericType<List<Valoracionestotales>>() {};

@@ -12,8 +12,10 @@
 <body>
     <div class="container mt-5">
         <div class="card">
-            <div class="card-body">
+            <div class="card-header">
                 <h5 class="card-title">Editar Perfil de Usuario</h5>
+            </div>
+            <div class="card-body">
                 <s:form action="editarUsuario" method="POST">
                     <div class="mb-3">
                         <s:textfield name="nombre" value="%{usuario.nombre}" label="Nombre" cssClass="form-control" />
@@ -25,7 +27,7 @@
                         <s:textfield name="email" value="%{usuario.email}" label="Email" cssClass="form-control" />
                     </div>
                     <div class="mb-3">
-                        <s:textfield name="password" value="%{usuario.password}" label="Contraseña" cssClass="form-control" />
+                        <s:password name="password" value="%{usuario.password}" label="Contraseña" cssClass="form-control" />
                     </div>
                     <div class="mb-3">
                         <s:textfield name="telefono" value="%{usuario.telefono}" label="Teléfono" cssClass="form-control" />
@@ -36,9 +38,11 @@
                     <s:hidden name="idUsuario" value="%{usuario.id}" />
                     <s:submit value="Actualizar" cssClass="btn btn-primary" />
                 </s:form>
+            </div>
+            <div class="card-footer text-muted">
                 <s:form action="borrarUsuario" method="POST">
                     <s:hidden name="idUsuario" value="%{usuario.id}" />
-                    <s:submit value="Borrar cuenta" cssClass="btn btn-primary" />
+                    <s:submit value="Borrar cuenta" cssClass="btn btn-danger" />
                 </s:form>
             </div>
         </div>

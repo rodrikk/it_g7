@@ -6,8 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPrOpiedades</title>
+    <title>UPrOpiedades - Favoritos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQ7A2Vp04eCTqOwTxKNTdB1xKjPyUE5tbxUEtP8tptxj9zsvsUePF9CZ2" crossorigin="anonymous">
+    <style>
+        .card-img-top {
+            max-height: 200px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <!-- Main Content -->
@@ -18,48 +24,40 @@
             </div>
         </div>
 
-        <div class="table-responsive">
+        <div class="row">
             <s:if test="!favoritos.isEmpty()">
-                <table class="table table-bordered table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Título</th>
-                        <th>Descripción</th>
-                        <th>Superficie</th>
-                        <th>Habitaciones</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <s:iterator value="favoritos" var="favorito">
-                        <tr>
-                            <td><img src="<s:property value="#favorito.idPropiedad.foto"></s:property>"/></td>
-                            <td><s:property value="#favorito.idPropiedad.titulo"/></td>
-                            <td><s:property value="#favorito.idPropiedad.descripcion"/></td>
-                            <td><s:property value="#favorito.idPropiedad.superficie"/> m²</td>
-                            <td><s:property value="#favorito.idPropiedad.numeroHabitaciones"/></td>
-                            <td>
-                                <div class="d-flex justify-content-around">
-                                    <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST">
-                                        <s:hidden name="idPropiedad" value="%{#favorito.idPropiedad.id}"/>
-                                        <s:hidden name="idValorador" value="%{#session.idUsuario}"/>
-                                        <s:submit name="boton" value="Ver propiedad" cssClass="btn btn-primary"/>
-                                    </s:form>
-                                    <s:form id="borrarFavoritos" name="borrarFavoritos" action="borrarFavoritos" method="POST">
-                                        <s:hidden name="idFavorito" value="%{#favorito.id}"/>
-                                        <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
-                                        <s:submit name="boton" value="Borrar" cssClass="btn btn-danger"/>
-                                    </s:form>
-                                </div>
-                            </td>
-                        </tr>
-                    </s:iterator>
-                </tbody>
-            </table>
+                <s:iterator value="favoritos" var="favorito">
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card">
+                            <img src="<s:property value="#favorito.idPropiedad.foto"/>" class="card-img-top" alt="<s:property value="#favorito.idPropiedad.titulo"/>">
+                            <div class="card-body">
+                                <h5 class="card-title"><s:property value="#favorito.idPropiedad.titulo"/></h5>
+                                <p class="card-text"><s:property value="#favorito.idPropiedad.descripcion"/></p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Superficie: <s:property value="#favorito.idPropiedad.superficie"/> m²</li>
+                                    <li class="list-group-item">Habitaciones: <s:property value="#favorito.idPropiedad.numeroHabitaciones"/></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST">
+                                    <s:hidden name="idPropiedad" value="%{#favorito.idPropiedad.id}"/>
+                                    <s:hidden name="idValorador" value="%{#session.idUsuario}"/>
+                                    <s:submit name="boton" value="Ver propiedad" cssClass="btn btn-primary"/>
+                                </s:form>
+                                <s:form id="borrarFavoritos" name="borrarFavoritos" action="borrarFavoritos" method="POST">
+                                    <s:hidden name="idFavorito" value="%{#favorito.id}"/>
+                                    <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
+                                    <s:submit name="boton" value="Borrar" cssClass="btn btn-danger"/>
+                                </s:form>
+                            </div>
+                        </div>
+                    </div>
+                </s:iterator>
             </s:if>
             <s:else>
-                <p>No tienes propiedades en favoritos</p>
+                <div class="col-12">
+                    <p class="text-center">No tienes propiedades en favoritos</p>
+                </div>
             </s:else>
         </div>
     </div>

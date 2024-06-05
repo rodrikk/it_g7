@@ -65,6 +65,12 @@
                                         </s:form>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" href="listSeguros">Seguros</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="listVisitas">Visitas</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <s:form action="logout" method="POST" cssClass="d-inline">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
                                             <s:submit cssClass="nav-link btn btn-link" style="text-decoration: none;" value="Cerrar sesión"/>

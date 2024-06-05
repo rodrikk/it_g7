@@ -9,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Inmobiliaria</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link href="index.css" rel="stylesheet">
     </head>
@@ -17,97 +16,73 @@
 
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <div class="container-fluid d-flex justify-content-between">
-                    <s:form action="verPropiedades" id="verPropiedades" method="POST">
-                        <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="UPrOpiedades"></s:submit>
+                <div class="container-fluid">
+                    <s:form action="verPropiedades" id="verPropiedades" method="POST" cssClass="d-flex">
+                        <button type="submit" class="navbar-brand btn btn-link text-white p-0" style="text-decoration: none;">UPrOpiedades</button>
                     </s:form>
-                    <div class="d-flex">
-                        <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-center mt-3" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Propiedades</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Propietarios</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="listSeguros">Seguros</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Valoraciones</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="listVisitas">Visitas</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                    <c:choose>
-                        <c:when test="${empty sessionScope.usuario}">
-                            <div class="d-flex">
-                                <ul class="navbar-nav">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <c:choose>
+                                <c:when test="${empty sessionScope.usuario}">
                                     <li class="nav-item">
                                         <a class="nav-link" href="login.jsp">Login</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="registrar_usuario.jsp">Registrarse</a>
                                     </li>
-                                </ul>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="d-flex">
-                                <button id="dropdownMenuLink" data-bs-toggle="dropdown" type="submit" class="btn btn-info me-2"><s:property value="%{#session.usuario}"></s:property></button>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                                        <li>
-                                        <s:form action="verPropiedades" id="verPropiedades" method="POST">
-                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Inicio"></s:submit>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="nav-item">
+                                        <s:form action="verPropiedades" method="POST" cssClass="d-inline">
+                                            <s:submit cssClass="nav-link btn btn-link" style="text-decoration: none;" value="Inicio"/>
                                         </s:form>
                                     </li>
-                                    <li>
-                                        <s:form action="verUsuario" id="verUsuario" method="POST">
-                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
-                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Perfil"></s:submit>
+                                    <li class="nav-item">
+                                        <s:form action="verUsuario" method="POST" cssClass="d-inline">
+                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
+                                            <s:submit cssClass="nav-link btn btn-link" style="text-decoration: none;" value="Perfil"/>
                                         </s:form>
                                     </li>
-                                    <li>
-                                        <s:form action="misPropiedades" id="misPropiedades" method="POST">
-                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
-                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Mis propiedades"></s:submit>
+                                    <li class="nav-item">
+                                        <s:form action="misPropiedades" method="POST" cssClass="d-inline">
+                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
+                                            <s:submit cssClass="nav-link btn btn-link" style="text-decoration: none;" value="Mis propiedades"/>
                                         </s:form>
                                     </li>
-                                    <li>
-                                        <s:form action="verFavoritos" id="verFavoritos" method="POST">
-                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
-                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Favoritos"></s:submit>
+                                    <li class="nav-item">
+                                        <s:form action="verFavoritos" method="POST" cssClass="d-inline">
+                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
+                                            <s:submit cssClass="nav-link btn btn-link" style="text-decoration: none;" value="Favoritos"/>
                                         </s:form>
                                     </li>
-                                    <li>
-                                        <s:form action="misAlquileres" id="misAlquileres" method="POST">
-                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
-                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Mis alquileres"></s:submit>
+                                    <li class="nav-item">
+                                        <s:form action="misAlquileres" method="POST" cssClass="d-inline">
+                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
+                                            <s:submit cssClass="nav-link btn btn-link" style="text-decoration: none;" value="Mis alquileres"/>
                                         </s:form>
                                     </li>
-                                    <li>
-                                        <s:form action="logout" id="logout" method="POST">
-                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
-                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Cerrar sesión"></s:submit>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="listSeguros">Seguros</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="listVisitas">Visitas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <s:form action="logout" method="POST" cssClass="d-inline">
+                                            <s:hidden name="idUsuario" value="%{#session.idUsuario}"/>
+                                            <s:submit cssClass="nav-link btn btn-link" style="text-decoration: none;" value="Cerrar sesión"/>
                                         </s:form>
                                     </li>
-                                </ul>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </header>
-
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>

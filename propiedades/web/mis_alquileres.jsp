@@ -33,7 +33,7 @@
                                     <td><img src="<s:property value="#alquiler.idPropiedad.foto"></s:property>"/></td>
                                     <td><s:property value="#alquiler.idPropiedad.titulo"></s:property></td>
                                     <td><s:property value="#alquiler.idPropiedad.descripcion"></s:property></td>
-                                    <td><s:property value="#alquiler.idPropiedad.superficie"></s:property> m2</td>
+                                    <td><s:property value="#alquiler.idPropiedad.superficie"></s:property> m<sup>2</sup></td>
                                     <td><s:property value="#alquiler.idPropiedad.numeroHabitaciones"></s:property></td>
                                     <td><s:property value="#alquiler.idPropiedad.precio"></s:property> €/día</td>
                                     <td><s:property value="#alquiler.fechaInicio"></s:property></td>
