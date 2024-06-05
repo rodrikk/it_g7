@@ -104,20 +104,12 @@ public class VisitasAction extends ActionSupport {
         Object visita_editada = visita;
         daoVisitas.edit_XML(visita_editada, String.valueOf(id));
         
-        /*GenericType<List<Visitas>> generic_visitas = new GenericType<List<Visitas>>() {};
-        visitas = daoVisitas.findAll_XML(generic_visitas);
-        
-        for(int i=0;i<visitas.size();i++) {
-            if(visitas.get(i).getId())
-        }*/
-        
-        
         return SUCCESS;
     }
     
     public String viewEdit() {
-        GenericType<Visitas> generic_seguro = new GenericType<Visitas>() {};
-        visita = daoVisitas.find_XML(generic_seguro, String.valueOf(id));
+        GenericType<Visitas> generic_visita = new GenericType<Visitas>() {};
+        visita = daoVisitas.find_XML(generic_visita, String.valueOf(id));
         return SUCCESS;
     }
 
@@ -131,4 +123,32 @@ public class VisitasAction extends ActionSupport {
         }
     }
 
+    // Method to display the form to create a new visit
+    public String createView() {
+        return SUCCESS;
+    }
+
+    // Method to create a new visit
+    public String create() {
+        try {
+            Visitas newVisita = new Visitas();
+            newVisita.setDuracion(duracion);
+
+            DAOPropiedades daoPropiedades = new DAOPropiedades();
+            GenericType<Propiedades> generic_propiedad = new GenericType<Propiedades>() {};
+            Propiedades propiedad = daoPropiedades.find_XML(generic_propiedad, String.valueOf(idPropiedad));
+            newVisita.setIdPropiedad(propiedad);
+
+            DAOUsuarios daoUsuarios = new DAOUsuarios();
+            GenericType<Usuarios> generic_usuario = new GenericType<Usuarios>() {};
+            Usuarios visitante = daoUsuarios.find_XML(generic_usuario, String.valueOf(idVisitante));
+            newVisita.setIdVisitante(visitante);
+
+            daoVisitas.create_XML(newVisita);
+            return SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ERROR;
+        }
+    }
 }

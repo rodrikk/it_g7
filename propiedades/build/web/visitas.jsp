@@ -1,7 +1,7 @@
 <%-- 
     Document   : visitas
     Created on : 02-jun-2024, 13:57:42
-    Author     : migue
+    Author     : rodri
 --%>
 
 <%@ include file="header.jsp" %>
@@ -17,6 +17,13 @@
                     <h1>Visitas de UPrOpiedades</h1>
                 </div>
             </div>
+        </div>
+
+        <!-- Create Button -->
+        <div class="container mt-4 text-center">
+            <s:form id="viewCrearVisita" action="viewCrearVisita" method="GET">
+                <s:submit name="boton" value="Crear Nueva Visita" cssClass="btn btn-success"/>
+            </s:form>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -46,11 +53,11 @@
                             <td>
                                 <s:form id="viewEditarVisita" name="viewEditarVisita" action="viewEditarVisita" method="POST">
                                     <s:hidden name="id" value="%{#visita.id}"></s:hidden>
-                                    <s:submit name="boton" value="Editar"></s:submit>
+                                    <s:submit name="boton" value="Editar" cssClass="btn btn-primary btn-sm"></s:submit>
                                 </s:form>
                                 <s:form id="deleteVisita" name="deleteVisita" action="deleteVisita" method="POST">
                                     <s:hidden name="id" value="%{#visita.id}"></s:hidden>
-                                    <s:submit name="boton" value="Eliminar" onclick="return confirm('¿Estás seguro de que quieres eliminar esta visita?');"></s:submit>
+                                    <s:submit name="boton" value="Eliminar" cssClass="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar esta visita?');"></s:submit>
                                 </s:form>
                             </td>
                         </tr>

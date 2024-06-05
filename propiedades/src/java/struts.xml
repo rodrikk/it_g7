@@ -92,6 +92,13 @@
             <result name="success" type="redirectAction">listVisitas</result>
             <result name="error">/error.jsp</result>
         </action>
+        <action name="viewCrearVisita" class="Acciones.VisitasAction" method="createView">
+            <result name="success">/crearVisita.jsp</result>
+        </action>
+        <action name="createVisita" class="Acciones.VisitasAction" method="create">
+            <result name="success" type="redirectAction">listVisitas</result>
+            <result name="error">/error.jsp</result>
+        </action>
         <action name="deleteVisita" class="Acciones.VisitasAction" method="delete">
             <result name="success" type="redirectAction">listVisitas</result>
             <result name="error">/error.jsp</result>
@@ -104,6 +111,13 @@
             <result name="success">/editarSeguro.jsp</result>
         </action>
         <action name="editSeguro" class="Acciones.SegurosAction" method="edit">
+            <result name="success" type="redirectAction">listSeguros</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="viewCrearSeguro" class="Acciones.SegurosAction" method="createView">
+            <result name="success">/crearSeguro.jsp</result>
+        </action>
+        <action name="createSeguro" class="Acciones.SegurosAction" method="create">
             <result name="success" type="redirectAction">listSeguros</result>
             <result name="error">/error.jsp</result>
         </action>

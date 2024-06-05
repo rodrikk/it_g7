@@ -15,6 +15,9 @@
     <body>
         <div class="container my-5">
             <h1 class="text-center mb-4">Seguros de UPrOpiedades</h1>
+            <s:form id="viewCrearSeguro" name="viewCrearSeguro" action="viewCrearSeguro" method="GET">
+                <s:submit name="boton" value="Crear Nuevo Seguro" cssClass="btn btn-success"/>
+            </s:form>
 
                     <s:iterator var="seguro" value="seguros">
                         <h2>Seguro ID: ${seguro.id}</h2>
