@@ -44,9 +44,8 @@
                     <div class="mb-3">
                         <s:textfield id="telefono" name="telefono" cssClass="form-control" label="Teléfono"/>
                     </div>
-                    <div class="mb-3">
-                        <label for="fecha">Fecha de nacimiento:</label>
-                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br/>
+                    <div class="mb-3 calendario">
+                        <s:textfield label="Fecha de nacimiento" name="fechaNacimiento" id="fechaNacimiento" cssClass="form-control" type="date"/>
                     </div>
                     <div class="d-grid">
                         <s:submit cssClass="btn btn-primary" value="Registrarse"/>

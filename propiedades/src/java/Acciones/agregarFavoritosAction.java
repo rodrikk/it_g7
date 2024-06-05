@@ -21,6 +21,7 @@ public class agregarFavoritosAction extends ActionSupport implements ServletRequ
     private Usuarios usuario;
     private Propiedades propiedad;
     private String id = "";
+    private boolean esFavorito;
 
     public agregarFavoritosAction() {
     }
@@ -77,6 +78,14 @@ public class agregarFavoritosAction extends ActionSupport implements ServletRequ
     public void setId(String id) {
         this.id = id;
     }
+
+    public boolean isEsFavorito() {
+        return esFavorito;
+    }
+
+    public void setEsFavorito(boolean esFavorito) {
+        this.esFavorito = esFavorito;
+    }
     
     public String execute() throws Exception {
         DAOFavoritos daoFavoritos = new DAOFavoritos();
@@ -102,6 +111,8 @@ public class agregarFavoritosAction extends ActionSupport implements ServletRequ
         session.setAttribute("existeFavorito", true);
         
         id = String.valueOf(favorito.getId());
+        
+        esFavorito = true;
         
         return SUCCESS;
     }

@@ -18,6 +18,7 @@ public class editarPropiedadAction extends ActionSupport {
     
     private String idPropiedad = "";
     private String idDireccion = "";
+    private String foto = "";
     private String titulo = "";
     private String descripcion = "";
     private String superficie = "";
@@ -54,6 +55,14 @@ public class editarPropiedadAction extends ActionSupport {
 
     public void setIdDireccion(String idDireccion) {
         this.idDireccion = idDireccion;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getTitulo() {
@@ -225,7 +234,7 @@ public class editarPropiedadAction extends ActionSupport {
         
         operacion = daoOperaciones.find_XML(generic_operacion, idOperacion);
         
-        Propiedades propiedadEditada = new Propiedades(propiedad.getId(), titulo, descripcion, Integer.parseInt(superficie), Integer.parseInt(numeroHabitaciones), propiedad.getFoto(), Double.parseDouble(precio), propiedad.getIdPropietario(), propiedad.getIdInquilino(), direccionEditada, operacion);
+        Propiedades propiedadEditada = new Propiedades(propiedad.getId(), titulo, descripcion, Integer.parseInt(superficie), Integer.parseInt(numeroHabitaciones), foto, Double.parseDouble(precio), propiedad.getIdPropietario(), propiedad.getIdInquilino(), direccionEditada, operacion);
         
         Object obj_propiedad = propiedadEditada;
         daoPropiedades.edit_XML(obj_propiedad, idPropiedad);

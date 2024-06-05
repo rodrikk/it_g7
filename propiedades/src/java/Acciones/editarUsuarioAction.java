@@ -1,8 +1,10 @@
 package Acciones;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionContext;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import javax.ws.rs.core.GenericType;
 import modelo.Usuarios;
 import servicios.DAOUsuarios;
@@ -109,6 +111,9 @@ public class editarUsuarioAction {
         GenericType<Usuarios> generic;
         generic = new GenericType<Usuarios>() {};
         usuario = dao.find_XML(generic, (idUsuario));
+        
+        Map session = (Map) ActionContext.getContext().get("session");
+        session.put("usuario", usuario.getNombre());
 
         return SUCCESS;
     }   

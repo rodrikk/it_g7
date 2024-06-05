@@ -1,9 +1,3 @@
-<%-- 
-    Document   : visitas
-    Created on : 02-jun-2024, 13:57:42
-    Author     : rodri
---%>
-
 <%@ include file="header.jsp" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>

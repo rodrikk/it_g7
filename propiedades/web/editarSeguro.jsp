@@ -1,9 +1,3 @@
-<%-- 
-    Document   : editarSeguro
-    Created on : 04-jun-2024, 21:54:16
-    Author     : Rodri
---%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>

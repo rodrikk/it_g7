@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 my-3">
-                        <img src="" alt="Imagen de la propiedad">
+                        <img src="<s:property value="propiedad.foto"></s:property>"/>
                     </div>
                     <div class="col-md-6">
                         <ul class="list-group list-group-flush">
@@ -100,7 +100,7 @@
                                     </s:elseif>
                                 </li>
                             </s:if>
-                            <s:if test="%{#session.existeFavorito}">
+                            <s:if test="%{esFavorito}">
                                 <s:form id="borrarFavoritos" name="borrarFavoritos" action="borrarFavoritos" method="POST">
                                     <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                     <s:hidden name="idPropiedad" value="%{propiedad.id}" />

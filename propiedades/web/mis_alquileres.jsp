@@ -32,7 +32,7 @@
                 <tbody>
                     <s:iterator value="alquileres" var="alquiler">
                         <tr>
-                            <td><!-- Poner lo necesario para que se vea la imagen --></td>
+                            <td><img src="<s:property value="#alquiler.idPropiedad.foto"></s:property>"/></td>
                             <td><s:property value="#alquiler.idPropiedad.titulo"></s:property></td>
                             <td><s:property value="#alquiler.idPropiedad.descripcion"></s:property></td>
                             <td><s:property value="#alquiler.idPropiedad.superficie"></s:property> m2</td>
@@ -54,6 +54,7 @@
                             <td>
                                 <s:form id="verPropiedad" name="verPropiedad" action="verPropiedad" method="POST">
                                     <s:hidden name="idPropiedad" value="%{#alquiler.idPropiedad.id}"/>
+                                    <s:hidden name="idValorador" value="%{#session.idUsuario}"/>
                                     <s:submit name="boton" value="Ver propiedad"></s:submit>
                                 </s:form>
                             </td>

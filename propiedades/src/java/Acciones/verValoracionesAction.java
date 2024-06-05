@@ -19,7 +19,6 @@ public class verValoracionesAction extends ActionSupport {
     public verValoracionesAction() {
     }
 
-   
     public List<Valoracionestotales> getValoracionesTotales() {
         return valoracionesTotales;
     }
@@ -30,11 +29,12 @@ public class verValoracionesAction extends ActionSupport {
 
     public String execute() throws Exception {
         DAOValoracionesTotales daoValoracionesTotales = new DAOValoracionesTotales();
-        
+
         GenericType<List<Valoracionestotales>> generic;
         generic = new GenericType<List<Valoracionestotales>>() {};
-        
+
         valoracionesTotales = daoValoracionesTotales.findAll_XML(generic);
+
         return SUCCESS;
     }
 }

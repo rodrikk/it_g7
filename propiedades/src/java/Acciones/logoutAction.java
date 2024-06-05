@@ -13,12 +13,30 @@ import servicios.DAOValoracionesTotales;
 
 public class logoutAction extends ActionSupport {
 
+    private List<Valoracionestotales> valoracionesTotales;
+    
     public logoutAction() {
     }
 
+    public List<Valoracionestotales> getValoracionesTotales() {
+        return valoracionesTotales;
+    }
+
+    public void setValoracionesTotales(List<Valoracionestotales> valoracionesTotales) {
+        this.valoracionesTotales = valoracionesTotales;
+    }
+
     public String execute() throws Exception {
+        DAOValoracionesTotales daoValoracionesTotales = new DAOValoracionesTotales();
+        
         Map session = (Map) ActionContext.getContext().get("session");
         session.remove("usuario");
+
+        GenericType<List<Valoracionestotales>> generic_valoracionesTotales;
+        generic_valoracionesTotales = new GenericType<List<Valoracionestotales>>() {};
+
+        valoracionesTotales = daoValoracionesTotales.findAll_XML(generic_valoracionesTotales);
+
         return SUCCESS;
     }
 }

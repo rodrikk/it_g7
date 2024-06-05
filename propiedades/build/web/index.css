@@ -5,7 +5,6 @@
     cursor: pointer;
 }
 
-.star:hover,
 .star.checked {
     color: gold;
 }

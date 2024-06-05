@@ -3,9 +3,11 @@ package Acciones;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
+import modelo.Favoritos;
 import modelo.Operaciones;
 import modelo.Propiedades;
 import modelo.Valoraciones;
+import servicios.DAOFavoritos;
 import servicios.DAOOperaciones;
 import servicios.DAOPropiedades;
 import servicios.DAOValoraciones;
@@ -18,7 +20,9 @@ public class verPropiedadAction extends ActionSupport {
     private List<Operaciones> operaciones;
     private List<Valoraciones> valoraciones;
     private String idValoracion = "";
-    private boolean existeValoracion;
+    private boolean existeValoracion = false;
+    private List<Favoritos> favoritos;
+    private boolean esFavorito = false;
 
     public verPropiedadAction() {
     }
@@ -78,11 +82,28 @@ public class verPropiedadAction extends ActionSupport {
     public void setIdValoracion(String idValoracion) {
         this.idValoracion = idValoracion;
     }
+
+    public List<Favoritos> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(List<Favoritos> favoritos) {
+        this.favoritos = favoritos;
+    }
+    
+    public boolean isEsFavorito() {
+        return esFavorito;
+    }
+
+    public void setEsFavorito(boolean esFavorito) {
+        this.esFavorito = esFavorito;
+    }
     
     public String execute() throws Exception {
         DAOPropiedades daoPropiedades = new DAOPropiedades();
         DAOOperaciones daoOperaciones = new DAOOperaciones();
         DAOValoraciones daoValoraciones = new DAOValoraciones();
+        DAOFavoritos daoFavoritos = new DAOFavoritos();
         
         GenericType<Propiedades> generic_propiedades;
         generic_propiedades = new GenericType<Propiedades> () {};
@@ -101,8 +122,17 @@ public class verPropiedadAction extends ActionSupport {
             if (valoraciones.get(i).getIdPropiedad().getId() == Integer.parseInt(idPropiedad) && valoraciones.get(i).getIdValorador().getId() == Integer.parseInt(idValorador)) {
                 existeValoracion = true;
                 idValoracion = String.valueOf(valoraciones.get(i).getId());
-            } else {
-                existeValoracion = false;
+            }
+        }
+        
+        GenericType<List<Favoritos>> generic_favoritos;
+        generic_favoritos = new GenericType<List<Favoritos>> () {};
+        
+        favoritos = daoFavoritos.findAll_XML(generic_favoritos);
+        
+        for (int i = 0; i < favoritos.size(); i++) {
+            if (favoritos.get(i).getIdPropiedad().getId() == Integer.parseInt(idPropiedad) && favoritos.get(i).getIdUsuario().getId() == Integer.parseInt(idValorador)) {
+                esFavorito = true;
             }
         }
         

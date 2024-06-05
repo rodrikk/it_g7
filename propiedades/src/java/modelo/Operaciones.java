@@ -8,6 +8,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class Operaciones implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "operacion")
     private String operacion;
-    @OneToMany(mappedBy = "idOperacion")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idOperacion")
     private Collection<Propiedades> propiedadesCollection;
 
     public Operaciones() {

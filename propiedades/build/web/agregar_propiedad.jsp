@@ -7,12 +7,13 @@
         <section class="propiedad">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6 my-3">
-                        <img src="" alt="Imagen de la propiedad">
-                    </div>
                     <div class="col-md-6">
+                        <h1>Añadir propiedad</h1>
                         <s:form id="agregarPropiedad" name="agregarPropiedad" action="agregarPropiedad" method="POST">
                             <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <s:textfield id="foto" name="foto" label="Foto"/>
+                                </li>
                                 <li class="list-group-item">
                                     <s:textfield id="titulo" name="titulo" label="Título"/>
                                 </li>

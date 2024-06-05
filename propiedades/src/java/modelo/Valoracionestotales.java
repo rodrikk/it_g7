@@ -58,7 +58,7 @@ public class Valoracionestotales implements Serializable {
         this.id = id;
         this.valoracionTotal = valoracionTotal;
     }
-
+    
     public Valoracionestotales(Integer id, double valoracionTotal, Propiedades idPropiedad) {
         this.id = id;
         this.valoracionTotal = valoracionTotal;

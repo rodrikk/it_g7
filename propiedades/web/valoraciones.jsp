@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 31-may-2024, 16:33:49
-    Author     : migue
---%>
-
 <%@ include file="header.jsp" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

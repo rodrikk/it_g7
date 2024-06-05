@@ -23,6 +23,7 @@ public class borrarFavoritosAction extends ActionSupport implements ServletReque
     private String idPropiedad = "";
     private Propiedades propiedad;
     private String boton = "";
+    private boolean esFavorito;
 
     public borrarFavoritosAction() {
     }
@@ -88,6 +89,14 @@ public class borrarFavoritosAction extends ActionSupport implements ServletReque
         this.boton = boton;
     }
 
+    public boolean isEsFavorito() {
+        return esFavorito;
+    }
+
+    public void setEsFavorito(boolean esFavorito) {
+        this.esFavorito = esFavorito;
+    }
+
     public String execute() throws Exception {
         DAOFavoritos daoFavoritos = new DAOFavoritos();
         HttpSession session = request.getSession();
@@ -109,7 +118,7 @@ public class borrarFavoritosAction extends ActionSupport implements ServletReque
                 generic_propiedades = new GenericType<Propiedades> () {};
                 propiedad = dao.find_XML(generic_propiedades, idPropiedad);
                 
-                session.setAttribute("existeFavorito", false);
+                esFavorito = false;
                 
                 return "borrar";
             default:
@@ -122,7 +131,7 @@ public class borrarFavoritosAction extends ActionSupport implements ServletReque
                     }
                 }
 
-                session.setAttribute("existeFavorito", false);
+                esFavorito = false;
 
                 return SUCCESS;
         }

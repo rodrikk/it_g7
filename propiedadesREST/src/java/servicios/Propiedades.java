@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -40,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Propiedades.findByDescripcion", query = "SELECT p FROM Propiedades p WHERE p.descripcion = :descripcion")
     , @NamedQuery(name = "Propiedades.findBySuperficie", query = "SELECT p FROM Propiedades p WHERE p.superficie = :superficie")
     , @NamedQuery(name = "Propiedades.findByNumeroHabitaciones", query = "SELECT p FROM Propiedades p WHERE p.numeroHabitaciones = :numeroHabitaciones")
+    , @NamedQuery(name = "Propiedades.findByFoto", query = "SELECT p FROM Propiedades p WHERE p.foto = :foto")
     , @NamedQuery(name = "Propiedades.findByPrecio", query = "SELECT p FROM Propiedades p WHERE p.precio = :precio")})
 public class Propiedades implements Serializable {
 
@@ -67,9 +67,9 @@ public class Propiedades implements Serializable {
     @NotNull
     @Column(name = "numero_habitaciones")
     private int numeroHabitaciones;
-    @Lob
+    @Size(max = 255)
     @Column(name = "foto")
-    private byte[] foto;
+    private String foto;
     @Basic(optional = false)
     @NotNull
     @Column(name = "precio")
@@ -86,7 +86,7 @@ public class Propiedades implements Serializable {
     @ManyToOne(optional = false)
     private Direcciones idDireccion;
     @JoinColumn(name = "id_operacion", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Operaciones idOperacion;
     @JoinColumn(name = "id_propietario", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -157,11 +157,11 @@ public class Propiedades implements Serializable {
         this.numeroHabitaciones = numeroHabitaciones;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 

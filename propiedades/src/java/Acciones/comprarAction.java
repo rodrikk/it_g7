@@ -12,12 +12,14 @@ import javax.ws.rs.core.GenericType;
 import modelo.Alquileres;
 import modelo.Compras;
 import modelo.Favoritos;
+import modelo.Operaciones;
 import modelo.Propiedades;
 import modelo.Usuarios;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import servicios.DAOAlquileres;
 import servicios.DAOCompras;
 import servicios.DAOFavoritos;
+import servicios.DAOOperaciones;
 import servicios.DAOPropiedades;
 import servicios.DAORoles;
 import servicios.DAOUsuarios;
@@ -90,6 +92,7 @@ public class comprarAction extends ActionSupport {
         DAOUsuarios daoUsuarios = new DAOUsuarios();
         DAOPropiedades daoPropiedades = new DAOPropiedades();
         DAOCompras daoCompras = new DAOCompras();
+        DAOOperaciones daoOperaciones = new DAOOperaciones();
         
         GenericType<Usuarios> generic_usuarios;
         generic_usuarios = new GenericType<Usuarios> () {};
@@ -114,12 +117,18 @@ public class comprarAction extends ActionSupport {
         Object obj_compra = compra;
         daoCompras.create_XML(obj_compra);
         
-        Propiedades propiedadComprada = new Propiedades(propiedad.getId(), propiedad.getTitulo(), propiedad.getDescripcion(), propiedad.getSuperficie(), propiedad.getNumeroHabitaciones(), propiedad.getFoto(), propiedad.getPrecio(), comprador, null, propiedad.getIdDireccion(), propiedad.getIdOperacion());
+        GenericType<Operaciones> geenric_operacion;
+        geenric_operacion = new GenericType<Operaciones> () {};
+        Operaciones operacion = daoOperaciones.find_XML(geenric_operacion, "3");
+        
+        Propiedades propiedadComprada = new Propiedades(propiedad.getId(), propiedad.getTitulo(), propiedad.getDescripcion(), propiedad.getSuperficie(), propiedad.getNumeroHabitaciones(), propiedad.getFoto(), propiedad.getPrecio(), comprador, null, propiedad.getIdDireccion(), operacion);
         
         Object obj_propiedad = propiedadComprada;
         daoPropiedades.edit_XML(obj_propiedad, idPropiedad);
         
         propiedadComprada = daoPropiedades.find_XML(generic_propiedades, idPropiedad);
+        
+        propiedad = daoPropiedades.find_XML(generic_propiedades, idPropiedad);
         
         return SUCCESS;
     }

@@ -5,15 +5,18 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="" class="">
-            <result name="success">/index.jsp</result>
+        <action name="" class="Acciones.verPropiedadesAction">
+            <result name="success">/propiedades.jsp</result>
+        </action>
+        <action name="verPropiedades" class="Acciones.verPropiedadesAction">
+            <result name="success">/propiedades.jsp</result>
         </action>
         <action name="login" class="Acciones.loginAction">
             <result name="success">/propiedades.jsp</result>
             <result name="error">/login.jsp</result>
         </action>
         <action name="logout" class="Acciones.logoutAction">
-            <result name="success">/index.jsp</result>
+            <result name="success">/propiedades.jsp</result>
         </action>
         <action name="verPropiedad" class="Acciones.verPropiedadAction">
             <result name="success">/propiedad.jsp</result>
@@ -49,7 +52,7 @@
         <action name="borrarPropiedad" class="Acciones.borrarPropiedadAction">
             <result name="success">/mis_propiedades.jsp</result>
         </action>
-        <action name="formEditarPropiedad" class="Acciones.verPropiedadAction">
+        <action name="formEditarPropiedad" class="Acciones.verPropiedadEditarAction">
             <result name="success">/editar_propiedad.jsp</result>
         </action>
         <action name="editarPropiedad" class="Acciones.editarPropiedadAction">
@@ -62,7 +65,7 @@
             <result name="success">/usuario.jsp</result>
         </action>
         <action name="borrarUsuario" class="Acciones.borrarUsuarioAction">
-            <result name="success">/index.jsp</result>
+            <result name="success">/propiedades.jsp</result>
         </action>
         <action name="misAlquileres" class="Acciones.misAlquileresAction">
             <result name="success">/mis_alquileres.jsp</result>
@@ -124,6 +127,9 @@
         <action name="deleteSeguro" class="Acciones.SegurosAction" method="delete">
             <result name="success" type="redirectAction">listSeguros</result>
             <result name="error">/error.jsp</result>
+        </action>
+        <action name="buscarPropiedades" class="Acciones.buscarCiudadAction">
+            <result name="success">/propiedades_ciudad.jsp</result>
         </action>
     </package>
 </struts>

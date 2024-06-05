@@ -26,7 +26,7 @@
     </head>
     <body>
         <div class="container">
-            <s:if test="%{!error.isEmpty}">
+            <s:if test="%{!error.isEmpty()}">
                 <div class="alert alert-danger" role="alert">
                     Mensaje de error: <s:property value="error"/>
                 </div>
@@ -45,7 +45,7 @@
                     </div>
                 </s:form>
                 <div class="d-grid">
-                    <a href="registro.jsp" class="btn btn-outline-secondary">¿No tienes cuenta?</a>
+                    <a href="registrar_usuario.jsp" class="btn btn-outline-secondary">¿No tienes cuenta?</a>
                 </div>
             </div>
         </div>

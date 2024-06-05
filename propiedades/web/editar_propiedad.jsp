@@ -8,11 +8,15 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 my-3">
-                        <img src="" alt="Imagen de la propiedad">
+                        <h1>Editar propiedad</h1>
+                        <img src="<s:property value="propiedad.foto"></s:property>"/>
                     </div>
                     <div class="col-md-6">
                         <s:form id="editarPropiedad" name="editarPropiedad" action="editarPropiedad" method="POST">
                             <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <s:textfield id="foto" name="foto" value="%{propiedad.foto}" label="Foto"/>
+                                </li>
                                 <li class="list-group-item">
                                     <s:textfield id="titulo" name="titulo" value="%{propiedad.titulo}" label="Título"/>
                                 </li>

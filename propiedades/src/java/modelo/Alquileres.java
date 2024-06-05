@@ -75,7 +75,7 @@ public class Alquileres implements Serializable {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
     }
-
+    
     public Alquileres(Integer id, Usuarios idPropietario, Usuarios idAlquilado, Propiedades idPropiedad, Date fechaInicio, Date fechaFin) {
         this.id = id;
         this.idPropietario = idPropietario;

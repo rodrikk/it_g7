@@ -18,7 +18,9 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="container-fluid d-flex justify-content-between">
-                    <a class="navbar-brand" href="#">UPrOpiedades</a>
+                    <s:form action="verPropiedades" id="verPropiedades" method="POST">
+                        <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="UPrOpiedades"></s:submit>
+                    </s:form>
                     <div class="d-flex">
                         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -44,6 +46,7 @@
                         </div>
                     </div>
 
+
                     <c:choose>
                         <c:when test="${empty sessionScope.usuario}">
                             <div class="d-flex">
@@ -59,25 +62,38 @@
                         </c:when>
                         <c:otherwise>
                             <div class="d-flex">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">                                      
+                                <button id="dropdownMenuLink" data-bs-toggle="dropdown" type="submit" class="btn btn-info me-2"><s:property value="%{#session.usuario}"></s:property></button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                                        <li>
+                                        <s:form action="verPropiedades" id="verPropiedades" method="POST">
+                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Inicio"></s:submit>
+                                        </s:form>
+                                    </li>
+                                    <li>
                                         <s:form action="verUsuario" id="verUsuario" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
-                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="%{#session.usuario}">                                                
-                                            </s:submit>
+                                            <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Perfil"></s:submit>
                                         </s:form>
+                                    </li>
+                                    <li>
                                         <s:form action="misPropiedades" id="misPropiedades" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                             <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Mis propiedades"></s:submit>
                                         </s:form>
+                                    </li>
+                                    <li>
                                         <s:form action="verFavoritos" id="verFavoritos" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                             <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Favoritos"></s:submit>
                                         </s:form>
+                                    </li>
+                                    <li>
                                         <s:form action="misAlquileres" id="misAlquileres" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                             <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Mis alquileres"></s:submit>
                                         </s:form>
+                                    </li>
+                                    <li>
                                         <s:form action="logout" id="logout" method="POST">
                                             <s:hidden name="idUsuario" value="%{#session.idUsuario}" />
                                             <s:submit class="nav-link btn btn-link" style="padding: 0; border: none; background: none; cursor: pointer;" value="Cerrar sesión"></s:submit>

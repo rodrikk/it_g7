@@ -18,6 +18,7 @@ import servicios.DAOValoracionesTotales;
 
 public class agregarPropiedadAction extends ActionSupport {
     
+    private String foto = "";
     private String titulo = "";
     private String descripcion = "";
     private String superficie = "";
@@ -36,8 +37,18 @@ public class agregarPropiedadAction extends ActionSupport {
     private Usuarios propietario;
     private Valoracionestotales valoracionTotal;
     private List<Propiedades> misPropiedades = new ArrayList<>();
+    private Direcciones direccion;
+    private Propiedades propiedad;
     
     public agregarPropiedadAction() {
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getTitulo() {
@@ -183,6 +194,14 @@ public class agregarPropiedadAction extends ActionSupport {
     public void setMisPropiedades(List<Propiedades> misPropiedades) {
         this.misPropiedades = misPropiedades;
     }
+
+    public Direcciones getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direcciones direccion) {
+        this.direccion = direccion;
+    }
     
     public String execute() throws Exception {
         DAODirecciones daoDirecciones = new DAODirecciones();
@@ -209,10 +228,13 @@ public class agregarPropiedadAction extends ActionSupport {
         
         propietario = daoUsuarios.find_XML(generic_usuario, idUsuario);
         
-        Propiedades propiedadCrear = new Propiedades(100, titulo, descripcion, Integer.parseInt(superficie), Integer.parseInt(numeroHabitaciones), null, Double.parseDouble(precio), propietario, null, direccionCrear, operacion);
+        direccion = direccionCrear;
+        
+        
+        Propiedades propiedadCrear = new Propiedades(titulo, descripcion, Integer.parseInt(superficie), Integer.parseInt(numeroHabitaciones), foto, Double.parseDouble(precio), propietario, null, direccion, operacion);
         
         Object obj_propiedad = propiedadCrear;
-        daoPropiedades.edit_XML(obj_propiedad, "100");
+        daoPropiedades.create_XML(obj_propiedad);
         
         valoracionTotal = new Valoracionestotales(0, propiedadCrear);
         
