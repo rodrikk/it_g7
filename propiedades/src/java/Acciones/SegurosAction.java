@@ -1,5 +1,7 @@
 package Acciones;
 
+import static com.opensymphony.xwork2.Action.ERROR;
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -157,6 +159,42 @@ public class SegurosAction extends ActionSupport {
         try {
             daoSeguros.remove(String.valueOf(id));
             System.out.println(id);
+            return SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ERROR;
+        }
+    }
+
+    // Method to view the create form
+    public String createView() {
+        return SUCCESS;
+    }
+
+    // Method to create a new seguro
+    public String create() {
+        try {
+            Seguros newSeguro = new Seguros();
+            newSeguro.setCobertura(cobertura);
+            newSeguro.setTarifa(tarifa);
+
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date ini = format.parse(fechaInicio);
+            newSeguro.setFechaInicio(ini);
+            Date fin = format.parse(fechaFin);
+            newSeguro.setFechaFin(fin);
+
+            DAOPropiedades daoPropiedades = new DAOPropiedades();
+            GenericType<Propiedades> generic_propiedad = new GenericType<Propiedades>() {};
+            Propiedades propiedad = daoPropiedades.find_XML(generic_propiedad, String.valueOf(idPropiedad));
+            newSeguro.setIdPropiedad(propiedad);
+
+            DAOUsuarios daoUsuarios = new DAOUsuarios();
+            GenericType<Usuarios> generic_usuario = new GenericType<Usuarios>() {};
+            Usuarios inquilino = daoUsuarios.find_XML(generic_usuario, String.valueOf(idInquilino));
+            newSeguro.setIdInquilino(inquilino);
+
+            daoSeguros.create_XML(newSeguro);
             return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
